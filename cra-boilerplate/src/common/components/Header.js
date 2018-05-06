@@ -32,15 +32,12 @@ class Header extends Component {
 	    <header>
 	    	<Container>
 					<Navbar color="faded" light expand="md">
-	          <NavbarBrand href="/">reactstrap</NavbarBrand>
+	          <NavbarBrand href="/">CryptoNalysis</NavbarBrand>
 	          <NavbarToggler onClick={this.toggle} />
 	          <Collapse isOpen={this.state.isOpen} navbar>
 	            <Nav className="ml-auto" navbar>
 	              <NavItem>
 	                <NavLink href="#/">Home</NavLink>
-	              </NavItem>
-	              <NavItem>
-	                <NavLink href="#/about">About</NavLink>
 	              </NavItem>
 	            </Nav>
 	          </Collapse>

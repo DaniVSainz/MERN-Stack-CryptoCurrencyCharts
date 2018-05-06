@@ -10,9 +10,9 @@ class About extends React.Component {
     	<div id="about">
 	    	<Container>
 	    		<h2 className="text-center">
-		        About
+		        CryptoNalysis
 		      </h2>
-		      <p>About page content</p>
+		      <p>CryptoNalysis page content</p>
 			  </Container>
 		  </div>
     );
