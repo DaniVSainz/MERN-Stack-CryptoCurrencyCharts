@@ -1,0 +1,22 @@
+All virtual users finished
+Summary report @ 22:44:06(-0500) 2018-02-24
+  Scenarios launched:  1200
+  Scenarios completed: 1200
+  Requests completed:  1200
+  RPS sent: 19.85
+  Request latency:
+    min: 1.7
+    max: 18.3
+    median: 2.1
+    p95: 2.7
+    p99: 4
+  Scenario duration:
+    min: 2.5
+    max: 19.1
+    median: 3
+    p95: 3.8
+    p99: 5.5
+  Scenario counts:
+    0: 1200 (100%)
+  Codes:
+    200: 1200

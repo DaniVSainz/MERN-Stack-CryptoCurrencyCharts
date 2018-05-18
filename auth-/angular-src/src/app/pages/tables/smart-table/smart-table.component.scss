@@ -1,0 +1,21 @@
+@import '../../../@theme/styles/themes';
+
+
+nb-card {
+    transform: translate3d(0, 0, 0);
+  }
+  .red {
+    background-color:red;
+    color:red !important;
+  }
+  :host /deep/ .green-cell {
+    color:nb-theme(color-success)
+  }
+  :host /deep/ .icon-img {
+    height: 18px;
+    width: 18px;
+    margin-right: 1px;
+  }
+  :host /deep/ .red-cell {
+    color:nb-theme(color-danger)
+  }

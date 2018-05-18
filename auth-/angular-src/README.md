@@ -1,0 +1,1 @@
+Angular side of application
