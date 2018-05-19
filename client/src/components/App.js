@@ -3,26 +3,26 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import Home from './Home';
+import Header from './Header';
 
 
 
 class App extends Component {
 
   componentDidMount(){
-    this.props.fetchUser();
+    // this.props.fetchUser();
   }
 
   render() {
     return(
-      <div className="container">
+      <div className="">
         <BrowserRouter>
           <div>
-            <AppBar>
-              <div>Cryptonalysis</div>
-            </AppBar>
+            <Header></Header>
+            <div className="container">
+              <Route path="/" component={Home} exact></Route>
+            </div>
           </div>
         </BrowserRouter>
       </div>
