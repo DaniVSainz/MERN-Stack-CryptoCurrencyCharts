@@ -3,6 +3,10 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+
 
 
 class App extends Component {
@@ -16,11 +20,9 @@ class App extends Component {
       <div className="container">
         <BrowserRouter>
           <div>
-            Hi
-            {/* <Header></Header>
-            <Route path="/" component={Landing} exact></Route>
-            <Route path="/surveys" component={Dashboard} exact></Route>
-            <Route path="/surveys/new" component={SurveyNew}></Route> */}
+            <AppBar>
+              <div>Cryptonalysis</div>
+            </AppBar>
           </div>
         </BrowserRouter>
       </div>
