@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Home from './Home';
+import Login from './Login'
+
 import Header from './Header';
 
 
@@ -22,6 +24,7 @@ class App extends Component {
             <Header></Header>
             <div className="container">
               <Route path="/" component={Home} exact></Route>
+              <Route path="/login" component={Login} exact></Route>
             </div>
           </div>
         </BrowserRouter>
