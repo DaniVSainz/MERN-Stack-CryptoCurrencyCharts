@@ -3,17 +3,18 @@
     "node": "8.9.4"
   },
   "scripts": {
-    "build": "cd angular-src && ng build --prod && node fix-sw && cd .. && node bin/www",
-    "heroku-postbuild": "cd angular-src && npm i && npm run sw-build-live && cd ..",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "server": "nodemon ./bin/www",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server \" \"npm run client \" ",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm i --prefix client && npm run build --prefix client"
   },
   "dependencies": {
-    "@angular/compiler-cli": "^5.0.0",
     "@angular/cli": "1.6.3",
-    "typescript": "~2.4.2",
-
+    "@angular/compiler-cli": "^5.0.0",
     "bcryptjs": "2.4.3",
     "body-parser": "1.18.2",
+    "concurrently": "^3.5.1",
     "cors": "2.8.4",
     "dotenv": "^5.0.0",
     "express": "4.16.2",
@@ -23,7 +24,8 @@
     "node-env-file": "^0.1.8",
     "nodemailer": "^4.4.2",
     "passport": "0.4.0",
-    "passport-jwt": "3.0.1"
+    "passport-jwt": "3.0.1",
+    "typescript": "~2.4.2"
   },
   "author": "",
   "license": "MIT",
