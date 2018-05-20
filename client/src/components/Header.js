@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
 import { withStyles } from '@material-ui/core/styles';
-
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -114,4 +115,9 @@ class Header extends Component {
   }
 }
 
+function mapStateToProps({auth, ui}){
+  console.log(ui);
+  return{ auth, ui };
+}
+connect( mapStateToProps, actions )(Header);
 export default withStyles(styles, { withTheme: true })(Header);

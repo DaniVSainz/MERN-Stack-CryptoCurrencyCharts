@@ -136,8 +136,9 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps({auth}){
-  return{ auth };
+function mapStateToProps({auth, ui}){
+  console.log(ui);
+  return{ auth, ui };
 }
 
 App.propTypes = {
