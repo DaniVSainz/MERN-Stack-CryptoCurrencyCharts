@@ -36,6 +36,7 @@ function ButtonAppBar(props) {
             <Link to="/">CryptoNalysis</Link>
           </Typography>
           <Button color="inherit"><Link to="/login"> Login </Link></Button>
+          <Button color="inherit"><Link to="/register"> Register </Link></Button>
 
         </Toolbar>
       </AppBar>

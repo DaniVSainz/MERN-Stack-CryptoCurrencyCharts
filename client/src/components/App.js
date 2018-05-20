@@ -5,6 +5,7 @@ import * as actions from '../actions';
 
 import Home from './Home';
 import Login from './Login'
+import Register from './Register';
 
 import Header from './Header';
 
@@ -25,6 +26,7 @@ class App extends Component {
             <div className="container">
               <Route path="/" component={Home} exact></Route>
               <Route path="/login" component={Login} exact></Route>
+              <Route path="/register" component={Register} exact></Route>
             </div>
           </div>
         </BrowserRouter>
