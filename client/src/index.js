@@ -8,6 +8,7 @@ import reduxThunk from 'redux-thunk';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+
 import App from './components/App2'
 
 
@@ -22,9 +23,12 @@ const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 //Insert app into #root div in public/index
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider theme={theme}>
-      <App />
-    </MuiThemeProvider>
+    <div>
+      <CssBaseline />
+      <MuiThemeProvider theme={theme}>
+        <App />
+      </MuiThemeProvider>
+    </div>
   </Provider>,
   document.querySelector("#root")
 );

@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        <p>Home Page</p>
-      </div>
+      <Grid container spacing={24}>
+        <Typography variant="body1" color="primary">
+          Home Page 
+        </Typography>      
+      </Grid>
     );
   }
 }
