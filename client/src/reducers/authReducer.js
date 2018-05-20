@@ -7,7 +7,6 @@ export default function(state=null,action){
       return state;
     
     case USER_AUTHENTICATE:
-      console.log(action.payload);
       return action.payload || false ;
   }
 }

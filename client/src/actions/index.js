@@ -5,6 +5,7 @@ export const login = (values) => async (dispatch) => {
   let res = await axios.post('/api/users/authenticate', values).catch((err)=>{
     return err.response;
   })
+  console.log('action');
   dispatch({ type: USER_AUTHENTICATE, payload: res.data})
 }
 
