@@ -14,7 +14,7 @@ import { mailFolderListItems, otherMailFolderListItems } from '../utils/tileData
 
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import {closeDrawer, openDrawer, login} from '../actions';
 
 import Home from './Home';
 import Login from './Login'
@@ -89,17 +89,6 @@ const styles = theme => ({
 });
 
 class App extends React.Component {
-  state = {
-    open: false,
-  };
-
-  handleDrawerOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleDrawerClose = () => {
-    this.setState({ open: false });
-  };
 
   render() {
     const { classes, theme } = this.props;
@@ -111,12 +100,12 @@ class App extends React.Component {
         <Drawer
           variant="permanent"
           classes={{
-            paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose),
+            paper: classNames(classes.drawerPaper, !this.props.ui.open && classes.drawerPaperClose),
           }}
-          open={this.state.open}
+          open={this.props.ui.open}
         >
           <div className={classes.toolbar}>
-            <IconButton onClick={this.handleDrawerClose}>
+            <IconButton onClick={()=> closeDrawer()}>
               {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
             </IconButton>
           </div>
@@ -124,6 +113,7 @@ class App extends React.Component {
           <List>{mailFolderListItems}</List>
           <Divider />
           <List>{otherMailFolderListItems}</List>
+          <button onClick={login({username:'asd', pass:'asd'})} >asdasd</button>
         </Drawer>
           <main className={classes.content}>
             <Route path="/" component={Home} exact></Route>
@@ -137,7 +127,6 @@ class App extends React.Component {
 }
 
 function mapStateToProps({auth, ui}){
-  console.log(ui);
   return{ auth, ui };
 }
 
@@ -146,5 +135,6 @@ App.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-connect( mapStateToProps, actions )(App);
-export default withStyles(styles, { withTheme: true })(App);
+App = connect( mapStateToProps, {closeDrawer,openDrawer,login} )(App);
+export default   withStyles(styles, { withTheme: true })(App);
+

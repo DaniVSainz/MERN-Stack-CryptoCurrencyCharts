@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import {openDrawer} from '../actions';
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -79,28 +79,20 @@ const styles = theme => ({
 });
 
 class Header extends Component {
-  handleDrawerOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleDrawerClose = () => {
-    this.setState({ open: false });
-  };
-
   render() {
     const { classes, theme } = this.props;
 
     return (
       <AppBar
       position="absolute"
-      className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
+      className={classNames(classes.appBar, this.props.ui.open && classes.appBarShift)}
       >
-      <Toolbar disableGutters={!this.state.open}>
+      <Toolbar disableGutters={!this.props.ui.open}>
         <IconButton
           color="inherit"
           aria-label="open drawer"
-          onClick={this.handleDrawerOpen}
-          className={classNames(classes.menuButton, this.state.open && classes.hide)}
+          onClick={()=> this.props.openDrawer()}
+          className={classNames(classes.menuButton, this.props.ui.open && classes.hide)}
         >
           <MenuIcon />
         </IconButton>
@@ -115,9 +107,11 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps({auth, ui}){
-  console.log(ui);
-  return{ auth, ui };
+function mapStateToProps({ui}){
+  return{ ui };
 }
-connect( mapStateToProps, actions )(Header);
-export default withStyles(styles, { withTheme: true })(Header);
+
+// Header = withStyles(styles, { withTheme: true })(Header);
+// export default  connect( mapStateToProps,  )(Header);
+export default connect(mapStateToProps, {openDrawer})(withStyles(styles, { withTheme: true })(Header));
+
