@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LOGIN } from "./types";
+import { USER_AUTHENTICATE } from "./types";
 
 
 // export const fetchUser = () => {
@@ -15,7 +15,7 @@ import { LOGIN } from "./types";
 
 //Refactor below
 export const login = () => async (dispatch) => {
-  let res = await axios.get('/api/current_user');
-  dispatch({ type: login, payload: res.data})
+  let res = await axios.get('/api/users/authenticate');
+  dispatch({ type: USER_AUTHENTICATE, payload: res.data})
 }
 
