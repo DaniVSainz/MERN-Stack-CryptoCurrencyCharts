@@ -28,16 +28,17 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport')(passport);
+
+
 //Routes
 const users = require('./routes/users');
 const confirmation = require('./routes/confirmation');
-app.use('/users', users);
-app.use('/confirmation', confirmation);
+app.use('api/users', users);
+app.use('api/confirmation', confirmation);
 
-app.get('/', (req,res)=>{
-  res.send({msg:'Test Route'})
-})
 
+//Prod and Dev runs differently for hot reloading.
+//Logic to determine if running build in prod and act accordingly ie: serve static assists from build dir
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('client/build'));
 

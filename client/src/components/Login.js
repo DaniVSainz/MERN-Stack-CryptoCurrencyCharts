@@ -21,5 +21,5 @@ class Login extends Component {
 
 export default reduxForm({
   form: "loginForm",
-  destroyOnUnmount:false
+  // destroyOnUnmount:false
 })(Login);
