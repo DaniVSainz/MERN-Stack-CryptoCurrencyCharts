@@ -5,8 +5,9 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import reducers from './reducers';
 import reduxThunk from 'redux-thunk';
-import App from "./components/App";
 import CssBaseline from '@material-ui/core/CssBaseline';
+
+import App from './components/App2'
 
 
 //Development only axios helpers
