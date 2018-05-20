@@ -105,7 +105,7 @@ class App extends React.Component {
           open={this.props.ui.open}
         >
           <div className={classes.toolbar}>
-            <IconButton onClick={()=> closeDrawer()}>
+            <IconButton onClick={()=> this.props.closeDrawer()}>
               {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
             </IconButton>
           </div>
@@ -113,7 +113,6 @@ class App extends React.Component {
           <List>{mailFolderListItems}</List>
           <Divider />
           <List>{otherMailFolderListItems}</List>
-          <button onClick={login({username:'asd', pass:'asd'})} >asdasd</button>
         </Drawer>
           <main className={classes.content}>
             <Route path="/" component={Home} exact></Route>
