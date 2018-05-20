@@ -26,10 +26,10 @@ const drawerWidth = 240;
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: '100vh',
+    height: '100%',
     zIndex: 1,
     overflow: 'hidden',
-    position: 'relative',
+    position: 'static',
     display: 'flex',
   },
   appBar: {
@@ -85,6 +85,7 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
+    paddingTop: '100px'
   },
 });
 
