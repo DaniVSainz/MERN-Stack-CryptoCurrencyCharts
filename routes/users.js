@@ -63,6 +63,7 @@ router.post('/register', async (req,res,next) => {
 
 // Authenticate
 router.post('/authenticate', (req, res, next) => {
+  console.log(req.body);
   const username = req.body.username;
   const password = req.body.password;
 
@@ -98,9 +99,6 @@ router.post('/authenticate', (req, res, next) => {
   });
 });
 
-router.get('/authenticate', (req, res, next) => {
-  res.send({msg:'hi'});
-});
 
 // Profile
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {

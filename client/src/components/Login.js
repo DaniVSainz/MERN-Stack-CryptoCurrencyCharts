@@ -9,7 +9,7 @@ class Login extends Component {
       <div>
         Login Page
         <form onSubmit={this.props.handleSubmit((values)=> this.props.login(values))}>
-          <Field component="input" label="email" name="email" type="text"></Field>
+          <Field component="input" label="username" name="username" type="text"></Field>
           <Field component="input" label="password" name="password" type="text"></Field>
           <button type="submit" className="teal btn-flat right white-text" >
             Next
