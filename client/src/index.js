@@ -6,22 +6,25 @@ import {createStore, applyMiddleware} from 'redux';
 import reducers from './reducers';
 import reduxThunk from 'redux-thunk';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import App from './components/App2'
 
 
-//Development only axios helpers
-import axios from 'axios';
-window.axios = axios;
 
-
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  }
+});
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 //Insert app into #root div in public/index
 ReactDOM.render(
   <Provider store={store}>
-    <App>
-    </App>
+    <MuiThemeProvider theme={theme}>
+      <App />
+    </MuiThemeProvider>
   </Provider>,
   document.querySelector("#root")
 );
