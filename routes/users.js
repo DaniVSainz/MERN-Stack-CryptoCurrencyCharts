@@ -98,6 +98,10 @@ router.post('/authenticate', (req, res, next) => {
   });
 });
 
+router.get('/authenticate', (req, res, next) => {
+  res.send({msg:'hi'});
+});
+
 // Profile
 router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
   let tempUser = req.user;

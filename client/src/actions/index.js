@@ -14,7 +14,8 @@ import { USER_AUTHENTICATE } from "./types";
 // };
 
 //Refactor below
-export const login = () => async (dispatch) => {
+export const login = (values) => async (dispatch) => {
+  console.log(values);
   let res = await axios.get('/api/users/authenticate');
   dispatch({ type: USER_AUTHENTICATE, payload: res.data})
 }
