@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -21,6 +19,7 @@ import * as actions from '../actions';
 import Home from './Home';
 import Login from './Login'
 import Register from './Register';
+import Header from'./Header';
 
 const drawerWidth = 240;
 
@@ -106,25 +105,9 @@ class App extends React.Component {
     const { classes, theme } = this.props;
 
     return (
-      <div className={classes.root}>
-        <AppBar
-          position="absolute"
-          className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
-        >
-          <Toolbar disableGutters={!this.state.open}>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classNames(classes.menuButton, this.state.open && classes.hide)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="title" color="inherit" noWrap>
-              CryptoNalysis
-            </Typography>
-          </Toolbar>
-        </AppBar>
+      <BrowserRouter>
+      <div className={classNames(classes.root)}>
+        <Header></Header>
         <Drawer
           variant="permanent"
           classes={{
@@ -143,17 +126,12 @@ class App extends React.Component {
           <List>{otherMailFolderListItems}</List>
         </Drawer>
           <main className={classes.content}>
-            <BrowserRouter>
-              <div>
-                <div className="container">
-                  <Route path="/" component={Home} exact></Route>
-                  <Route path="/login" component={Login} exact></Route>
-                  <Route path="/register" component={Register} exact></Route>
-                </div>
-              </div>
-            </BrowserRouter>
+            <Route path="/" component={Home} exact></Route>
+            <Route path="/login" component={Login} exact></Route>
+            <Route path="/register" component={Register} exact></Route>
         </main>
       </div>
+      </BrowserRouter>
     );
   }
 }
