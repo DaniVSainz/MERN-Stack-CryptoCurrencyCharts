@@ -9,6 +9,14 @@ export const login = values => async dispatch => {
   dispatch({ type: USER_AUTHENTICATE, payload: res.data });
 };
 
+export const register = values => async dispatch => {
+  console.log('register')
+  let res = await axios.post("/api/users/register", values).catch(err => {
+    return err.response;
+  });
+  dispatch({ type: USER_AUTHENTICATE, payload: res.data });
+};
+
 export const openDrawer = () => {
   console.log('Open Drawer')
   return{

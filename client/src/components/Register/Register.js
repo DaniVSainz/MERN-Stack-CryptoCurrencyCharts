@@ -68,10 +68,10 @@ class Register extends Component {
         Hello from register
         <div>
           <form onSubmit={this.props.handleSubmit((values)=> console.log(values))}>
-            <Field component={renderTextField} label="username" name="username" type="text"></Field>
-            <Field component={renderTextField} label="email" name="email" type="text"></Field>
-            <Field component={renderTextField} label="password" name="passwordA" type="text"></Field>
-            <Field component={renderTextField} label="password" name="passwordB" type="text"></Field>
+            <Field component={renderTextField} autocomplete="username" label="username" name="username" type="text"></Field>
+            <Field component={renderTextField} autocomplete="email" label="email" name="email" type="text"></Field>
+            <Field component={renderTextField} autocomplete="password" label="password" name="passwordA" type="password"></Field>
+            <Field component={renderTextField} autocomplete="password" label="password" name="passwordB" type="password"></Field>
             <button type="submit" className="teal btn-flat right white-text" >
               Next
               <i className="material-icons right">done</i>
