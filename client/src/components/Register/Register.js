@@ -73,6 +73,10 @@ class Register extends Component {
             <Field component={renderTextField} label="email" name="email" type="text"></Field>
             <Field component={renderTextField} label="password" name="passwordA" type="text"></Field>
             <Field component={renderTextField} label="password" name="passwordB" type="text"></Field>
+            <button type="submit" className="teal btn-flat right white-text" >
+              Next
+              <i className="material-icons right">done</i>
+            </button>
           </ form>
         </div>
       </div>
