@@ -18,7 +18,7 @@ import {closeDrawer, openDrawer, login} from '../actions';
 
 import Home from './Home';
 import Login from './Login'
-import Register from './Register';
+import Register from './Register/Register';
 import Header from'./Header';
 
 const drawerWidth = 240;
