@@ -52,13 +52,18 @@ const renderTextField = ({
 }) => (
   <TextField
     label={label}
-    errorText={touched && error}
+    errortext={touched && error}
     {...input}
     {...custom}
   />
 )
 
 class Register extends Component {
+
+  register(values){
+    console.log('Clicked Register from component');
+    this.props.register(values);
+  }
   
   render() {
     const { classes } = this.props;
@@ -67,11 +72,11 @@ class Register extends Component {
       <div>
         Hello from register
         <div>
-          <form onSubmit={this.props.handleSubmit((values)=> console.log(values))}>
-            <Field component={renderTextField} autocomplete="username" label="username" name="username" type="text"></Field>
-            <Field component={renderTextField} autocomplete="email" label="email" name="email" type="text"></Field>
-            <Field component={renderTextField} autocomplete="password" label="password" name="passwordA" type="password"></Field>
-            <Field component={renderTextField} autocomplete="password" label="password" name="passwordB" type="password"></Field>
+          <form onSubmit={this.props.handleSubmit((values)=> this.register(values))}>
+            <Field component={renderTextField} autoComplete="username" label="username" name="username" type="text"></Field>
+            <Field component={renderTextField} autoComplete="email" label="email" name="email" type="text"></Field>
+            <Field component={renderTextField} autoComplete="password" label="password" name="passwordA" type="password"></Field>
+            <Field component={renderTextField} autoComplete="password" label="password" name="passwordB" type="password"></Field>
             <button type="submit" className="teal btn-flat right white-text" >
               Next
               <i className="material-icons right">done</i>

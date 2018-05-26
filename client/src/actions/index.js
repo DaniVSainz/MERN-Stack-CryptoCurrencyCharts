@@ -10,7 +10,7 @@ export const login = values => async dispatch => {
 };
 
 export const register = values => async dispatch => {
-  console.log('register')
+  console.log('Console log from register action' , values)
   let res = await axios.post("/api/users/register", values).catch(err => {
     return err.response;
   });
