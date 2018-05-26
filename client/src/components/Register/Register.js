@@ -27,7 +27,7 @@ const validate = values => {
   const requiredFields = [
     'username',
     'email',
-    'passwordA',
+    'password',
     'passwordB',
   ]
   requiredFields.forEach(field => {
@@ -75,7 +75,7 @@ class Register extends Component {
           <form onSubmit={this.props.handleSubmit((values)=> this.register(values))}>
             <Field component={renderTextField} autoComplete="username" label="username" name="username" type="text"></Field>
             <Field component={renderTextField} autoComplete="email" label="email" name="email" type="text"></Field>
-            <Field component={renderTextField} autoComplete="password" label="password" name="passwordA" type="password"></Field>
+            <Field component={renderTextField} autoComplete="password" label="password" name="password" type="password"></Field>
             <Field component={renderTextField} autoComplete="password" label="password" name="passwordB" type="password"></Field>
             <button type="submit" className="teal btn-flat right white-text" >
               Next
