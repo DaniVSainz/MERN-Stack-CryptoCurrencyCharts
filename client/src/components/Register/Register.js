@@ -7,6 +7,8 @@ import * as actions from '../../actions';
 import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import registerValidator from '../../utils/registerValidation';
+import DoneIcon from '@material-ui/icons/Done';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   container: {
@@ -47,11 +49,12 @@ const renderTextField = ({
 class Register extends Component {
 
   register(values){
-    console.log('Clicked Register from component');
+    console.log('Clicked Register from component', values);
     this.props.register(values);
   }
   
   render() {
+    const { pristine,submitting,invalid } = this.props;
 
     return (
       <div>
@@ -64,10 +67,10 @@ class Register extends Component {
             <Field component={renderTextField} autoComplete="email" label="email" name="email" type="text"></Field>
             <Field component={renderTextField} autoComplete="new-password" label="password" name="password" type="password"></Field>
             <Field component={renderTextField} autoComplete="new-password" label="password" name="passwordB" type="password"></Field>
-            <button type="submit" className="teal btn-flat right white-text" >
+            <Button type="submit" variant="raised" color="primary" disabled={ pristine || submitting || invalid} >
+              <DoneIcon />
               Next
-              <i className="material-icons right">done</i>
-            </button>
+            </Button>
           </ form>
         </div>
       </div>
