@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import { reduxForm, Field } from "redux-form";
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
+import Typography from '@material-ui/core/Typography';
+import withTheme from '@material-ui/core/styles/withTheme';
 
 const styles = theme => ({
   container: {
@@ -66,17 +68,19 @@ class Register extends Component {
   }
   
   render() {
-    const { classes } = this.props;
+    const { classes,theme } = this.props;
 
     return (
       <div>
-        Hello from register
+        <Typography variant="headline" gutterBottom>
+          Register Form
+        </Typography>
         <div>
           <form onSubmit={this.props.handleSubmit((values)=> this.register(values))}>
             <Field component={renderTextField} autoComplete="username" label="username" name="username" type="text"></Field>
             <Field component={renderTextField} autoComplete="email" label="email" name="email" type="text"></Field>
-            <Field component={renderTextField} autoComplete="password" label="password" name="password" type="password"></Field>
-            <Field component={renderTextField} autoComplete="password" label="password" name="passwordB" type="password"></Field>
+            <Field component={renderTextField}  label="password" name="password" type="password"></Field>
+            <Field component={renderTextField}  label="password" name="passwordB" type="password"></Field>
             <button type="submit" className="teal btn-flat right white-text" >
               Next
               <i className="material-icons right">done</i>
@@ -90,6 +94,7 @@ class Register extends Component {
 
 Register.propTypes = {
   classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
 };
 Register = reduxForm({form: "registerForm",})(Register)
 Register = connect(null,actions)(Register);

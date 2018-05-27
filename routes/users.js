@@ -20,9 +20,9 @@ router.post('/register', async (req,res,next) => {
     });
     let user;
 
-    // if( !newUser.username || newUser.email || newUser.password ){
-    //   return res.status(400).json({success: false, msg: `Please fill in all the fields`});
-    // }    
+    if( !newUser.username || !newUser.email || !newUser.password ){
+      return res.status(400).json({success: false, msg: `Please fill in all the fields`});
+    }    
 
     //Check if username is unique
     user = await User.findOne({username: newUser.username});
