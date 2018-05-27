@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import { reduxForm, Field } from "redux-form";
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
-import withTheme from '@material-ui/core/styles/withTheme';
+import registerValidator from '../../utils/registerValidation';
 
 const styles = theme => ({
   container: {
@@ -25,7 +24,8 @@ const styles = theme => ({
 });
 
 function validate(values){
-
+  let errors = registerValidator(values);
+  return errors;
 }
 
 
@@ -37,8 +37,8 @@ const renderTextField = ({
 }) => (
   <TextField
     label={label}
-    error={ touched && error}
-    helperText={error}
+    error={ touched && error !=null }
+    helperText={touched && error}
     {...input}
     {...custom}
   />
@@ -52,7 +52,6 @@ class Register extends Component {
   }
   
   render() {
-    const { classes,theme } = this.props;
 
     return (
       <div>
@@ -82,6 +81,6 @@ Register.propTypes = {
 Register = reduxForm(
   {form: "registerForm",
     validate,
-    })(Register)
+  })(Register)
 Register = connect(null,actions)(Register);
 export default withStyles(styles)(Register);

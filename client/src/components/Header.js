@@ -83,7 +83,7 @@ const styles = theme => ({
 
 class Header extends Component {
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
 
     return (
       <AppBar
