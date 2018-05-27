@@ -12,6 +12,9 @@ import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import {openDrawer} from '../actions';
 
+import PropTypes from 'prop-types';
+
+
 const drawerWidth = 240;
 const styles = theme => ({
   root: {
@@ -110,7 +113,10 @@ class Header extends Component {
 function mapStateToProps({ui}){
   return{ ui };
 }
-
+Header.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+};
 // Header = withStyles(styles, { withTheme: true })(Header);
 // export default  connect( mapStateToProps,  )(Header);
 export default connect(mapStateToProps, {openDrawer})(withStyles(styles, { withTheme: true })(Header));

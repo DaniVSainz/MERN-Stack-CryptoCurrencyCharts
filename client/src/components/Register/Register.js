@@ -24,27 +24,10 @@ const styles = theme => ({
   },
 });
 
-const validate = values => {
-  const errors = {}
-  const requiredFields = [
-    'username',
-    'email',
-    'password',
-    'passwordB',
-  ]
-  requiredFields.forEach(field => {
-    if (!values[field]) {
-      errors[field] = 'Required'
-    }
-  })
-  if (
-    values.email &&
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-  ) {
-    errors.email = 'Invalid email address'
-  }
-  return errors
+function validate(values){
+
 }
+
 
 const renderTextField = ({
   input,
@@ -54,7 +37,8 @@ const renderTextField = ({
 }) => (
   <TextField
     label={label}
-    errortext={touched && error}
+    error={ touched && error}
+    helperText={error}
     {...input}
     {...custom}
   />
@@ -79,8 +63,8 @@ class Register extends Component {
           <form onSubmit={this.props.handleSubmit((values)=> this.register(values))}>
             <Field component={renderTextField} autoComplete="username" label="username" name="username" type="text"></Field>
             <Field component={renderTextField} autoComplete="email" label="email" name="email" type="text"></Field>
-            <Field component={renderTextField}  label="password" name="password" type="password"></Field>
-            <Field component={renderTextField}  label="password" name="passwordB" type="password"></Field>
+            <Field component={renderTextField} autoComplete="new-password" label="password" name="password" type="password"></Field>
+            <Field component={renderTextField} autoComplete="new-password" label="password" name="passwordB" type="password"></Field>
             <button type="submit" className="teal btn-flat right white-text" >
               Next
               <i className="material-icons right">done</i>
@@ -94,8 +78,10 @@ class Register extends Component {
 
 Register.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
 };
-Register = reduxForm({form: "registerForm",})(Register)
+Register = reduxForm(
+  {form: "registerForm",
+    validate,
+    })(Register)
 Register = connect(null,actions)(Register);
 export default withStyles(styles)(Register);
