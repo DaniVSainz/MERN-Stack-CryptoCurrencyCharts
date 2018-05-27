@@ -49,9 +49,9 @@ if(process.env.NODE_ENV === 'production'){
   })
 }
 
+//Your local dev port or for heroku use the env port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`App listening on ${PORT}`);
 });
-
 module.exports = app;
