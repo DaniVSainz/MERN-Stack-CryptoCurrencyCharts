@@ -1,4 +1,4 @@
-import {USER_AUTHENTICATE} from '../actions/types';
+import {USER_AUTHENTICATE, USER_REGISTER} from '../actions/types';
 
 export default function(state=null,action){
 
@@ -7,7 +7,9 @@ export default function(state=null,action){
       return state;
     
     case USER_AUTHENTICATE:
-      console.log(action.payload)
+      return action.payload || false ;
+
+    case USER_REGISTER:
       return action.payload || false ;
       
   }

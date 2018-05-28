@@ -21,6 +21,10 @@ class Login extends Component {
   }
 }
 
-Login = connect(null,actions)(Login);
+function mapStateTopProps({auth}){
+  return {auth}
+}
+
+Login = connect(mapStateTopProps,actions)(Login);
 
 export default reduxForm({form: "loginForm",})(Login);

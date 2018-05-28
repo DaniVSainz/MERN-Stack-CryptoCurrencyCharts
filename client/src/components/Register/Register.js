@@ -48,9 +48,10 @@ const renderTextField = ({
 
 class Register extends Component {
 
-  register(values){
-    console.log('Clicked Register from component', values);
-    this.props.register(values);
+  async register(values){
+    return this.props.register(values).then(()=>{
+      console.log(this.props.auth);
+    });
   }
   
   render() {
@@ -78,6 +79,10 @@ class Register extends Component {
   }
 }
 
+function mapStateTopProps({auth}){
+  return {auth}
+}
+
 Register.propTypes = {
   classes: PropTypes.object.isRequired,
 };
@@ -85,5 +90,5 @@ Register = reduxForm(
   {form: "registerForm",
     validate,
   })(Register)
-Register = connect(null,actions)(Register);
+Register = connect(mapStateTopProps,actions)(Register);
 export default withStyles(styles)(Register);

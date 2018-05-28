@@ -1,5 +1,5 @@
 import axios from "axios";
-import { USER_AUTHENTICATE, OPEN_DRAWER, CLOSE_DRAWER } from "./types";
+import { USER_AUTHENTICATE, OPEN_DRAWER, CLOSE_DRAWER, USER_REGISTER } from "./types";
 
 export const login = values => async dispatch => {
   console.log('login')
@@ -10,11 +10,10 @@ export const login = values => async dispatch => {
 };
 
 export const register = values => async dispatch => {
-  console.log('Console log from register action' , values)
   let res = await axios.post("/api/users/register", values).catch(err => {
     return err.response;
   });
-  dispatch({ type: USER_AUTHENTICATE, payload: res.data });
+  dispatch({ type: USER_REGISTER, payload: res });
 };
 
 export const openDrawer = () => {
