@@ -4,11 +4,16 @@ import * as actions from '../actions';
 import { connect } from 'react-redux';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import renderTextField from '../utils/renderTextField';
+import DoneIcon from '@material-ui/icons/Done';
 
 
 class Login extends Component {
   render() {
+    const { pristine, submitting, invalid} = this.props;
+
     return (
       <Grid container spacing={24}>
         <Grid item xs={12}>
@@ -18,12 +23,12 @@ class Login extends Component {
             </Typography>
               <div>
                 <form onSubmit={this.props.handleSubmit((values)=> this.props.login(values))}>
-                  <Field component="input" label="username" name="username" type="text"></Field>
-                  <Field component="input" label="password" name="password" type="text"></Field>
-                  <button type="submit" className="teal btn-flat right white-text" >
+                  <Field component={renderTextField} label="username" name="username" type="text"></Field>
+                  <Field component={renderTextField} label="password" name="password" type="text"></Field>
+                  <Button type="submit" variant="raised" color="primary" disabled={ pristine || submitting || invalid} >
+                    <DoneIcon />
                     Next
-                    <i className="material-icons right">done</i>
-                  </button>
+                  </Button>
                 </form>
               </div>
           </Paper>
