@@ -8,7 +8,7 @@ import reducers from './reducers';
 import reduxThunk from 'redux-thunk';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
+import './index.css';
 
 import App from './components/App'
 

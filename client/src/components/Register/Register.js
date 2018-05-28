@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import registerValidator from '../../utils/registerValidation';
 import DoneIcon from '@material-ui/icons/Done';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
   container: {
@@ -47,24 +48,34 @@ const renderTextField = ({
 )
 
 class Register extends Component {
-
+  state={
+    msg: null
+  }
   async register(values){
     return this.props.register(values).then(()=>{
-      console.log(this.props.auth);
+      this.setState({msg: this.props.auth.data.msg})
+      console.log(this.state.msg);
     });
   }
   
   render() {
-    const { pristine,submitting,invalid } = this.props;
-
+    const { pristine, submitting, invalid} = this.props;
+    
     return (
       <div>
         <Typography variant="headline" gutterBottom>
           Register Form
         </Typography>
+          {this.state.msg && (
+            <Paper>
+              <Typography variant="body1" gutterBottom>
+                {this.state.msg}
+              </Typography>
+            </Paper>
+          )}
         <div>
           <form onSubmit={this.props.handleSubmit((values)=> this.register(values))}>
-            <Field component={renderTextField} autoComplete="username" label="username" name="username" type="text"></Field>
+            <Field component={renderTextField} autoFocus autoComplete="username" label="username" name="username" type="text"></Field>
             <Field component={renderTextField} autoComplete="email" label="email" name="email" type="text"></Field>
             <Field component={renderTextField} autoComplete="new-password" label="password" name="password" type="password"></Field>
             <Field component={renderTextField} autoComplete="new-password" label="password" name="passwordB" type="password"></Field>
