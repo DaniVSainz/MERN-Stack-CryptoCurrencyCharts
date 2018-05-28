@@ -34,9 +34,6 @@ const confirmation = require('./routes/confirmation');
 app.use('/api/users', users);
 app.use('/api/confirmation', confirmation);
 
-app.get('/', (req,res)=>{
-  res.send({msg:'Test Route'})
-})
 
 //Prod and Dev runs differently for hot reloading.
 //Logic to determine if running build in prod and act accordingly ie: serve static assists from build
