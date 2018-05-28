@@ -106,8 +106,8 @@ class Header extends Component {
           CryptoNalysis
         </Typography>
         <div style={{ 'margin-left': 'auto'}}>
-          <Link to="/login"><Button variant="outlined" color="primary" variant="raised">Login</Button></Link>
-          <Link to="/register"><Button variant="outlined" color="primary" variant="raised">Register</Button></Link>
+          <Link to="/login"><Button color="primary" variant="raised">Login</Button></Link>
+          <Link to="/register"><Button color="primary" variant="raised">Register</Button></Link>
         </div>
       </Toolbar>
     </AppBar>

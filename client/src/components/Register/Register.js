@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+// import TextField from '@material-ui/core/TextField';
 import { reduxForm, Field } from "redux-form";
 import * as actions from '../../actions';
 import { connect } from 'react-redux';
@@ -10,6 +10,8 @@ import registerValidator from '../../utils/registerValidation';
 import DoneIcon from '@material-ui/icons/Done';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+
+import renderTextField from '../../utils/renderTextField';
 
 const styles = theme => ({
   container: {
@@ -31,30 +33,14 @@ function validate(values){
   return errors;
 }
 
-
-const renderTextField = ({
-  input,
-  label,
-  meta: { touched, error },
-  ...custom
-}) => (
-  <TextField
-    label={label}
-    error={ touched && error !=null }
-    helperText={touched && error}
-    {...input}
-    {...custom}
-  />
-)
-
 class Register extends Component {
   state={
     msg: null,
     status: null
   }
   async register(values){
+    this.setState({msg:null})
     return this.props.register(values).then(()=>{
-      console.log(this.props.auth);
       this.setState({
         msg: this.props.auth.data.msg,
         status: this.props.auth.data.status,
