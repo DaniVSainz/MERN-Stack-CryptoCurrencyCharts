@@ -105,7 +105,7 @@ class Header extends Component {
         <Typography variant="title" color="inherit" noWrap>
           CryptoNalysis
         </Typography>
-        <div style={{ 'margin-left': 'auto'}}>
+        <div style={{ marginLeft: 'auto'}}>
           <Link to="/login"><Button color="primary" variant="raised">Login</Button></Link>
           <Link to="/register"><Button color="primary" variant="raised">Register</Button></Link>
         </div>

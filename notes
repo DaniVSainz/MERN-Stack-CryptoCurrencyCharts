@@ -1,3 +1,19 @@
 Cool ass gradient
 
     background: linear-gradient(110deg,#1d4350,#fbfbfb);
+
+main{
+  background: #c94b4b; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #c94b4b, #4b134f); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #c94b4b, #4b134f); 
+}
+header{
+  background: #c94b4b; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #c94b4b, #4b134f); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #c94b4b, #4b134f); 
+}
+.header{
+  background: #c94b4b; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #c94b4b, #4b134f); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #c94b4b, #4b134f); 
+}
