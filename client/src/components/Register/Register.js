@@ -49,12 +49,16 @@ const renderTextField = ({
 
 class Register extends Component {
   state={
-    msg: null
+    msg: null,
+    status: null
   }
   async register(values){
     return this.props.register(values).then(()=>{
-      this.setState({msg: this.props.auth.data.msg})
-      console.log(this.state.msg);
+      console.log(this.props.auth);
+      this.setState({
+        msg: this.props.auth.data.msg,
+        status: this.props.auth.data.status,
+      })
     });
   }
   

@@ -82,6 +82,9 @@ const styles = theme => ({
 });
 
 class Header extends Component {
+  
+
+
   render() {
     const { classes } = this.props;
 
@@ -102,8 +105,10 @@ class Header extends Component {
         <Typography variant="title" color="inherit" noWrap>
           CryptoNalysis
         </Typography>
-        <Button color="inherit"><Link to="/login"> Login </Link></Button>
-        <Button color="inherit"><Link to="/register"> Register </Link></Button>
+        <div style={{ 'margin-left': 'auto'}}>
+          <Link to="/login"><Button variant="outlined" color="primary" variant="raised">Login</Button></Link>
+          <Link to="/register"><Button variant="outlined" color="primary" variant="raised">Register</Button></Link>
+        </div>
       </Toolbar>
     </AppBar>
     );
