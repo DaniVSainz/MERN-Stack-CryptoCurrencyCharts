@@ -46,7 +46,7 @@ export const getToken = () => async dispatch => {
 
 export const logout = () =>  async dispatch =>{
   console.log('Logout');
-  localStorage.clear();
+  await localStorage.clear();
   let user = {
     user:{
       username: false

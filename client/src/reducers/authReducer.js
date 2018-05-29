@@ -18,7 +18,7 @@ export default function(state=initialState,action){
       return {...state, login: action.payload} || false ;
     
     case USER_REGISTER:
-      return action.payload || false ;
+      return {...state, register: action.payload} || false ;
       
     case USER_SET_JWT:
       return  { ...state , user: action.payload } || false ;

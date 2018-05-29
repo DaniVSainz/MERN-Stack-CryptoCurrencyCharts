@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 
 //Routing
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { connect } from 'react-redux';
+
+import toasterOven from '../../utils/myToasterOven';
+import Header from './Header';
+
 
 class HeaderMenu extends Component {
   state = {
@@ -22,9 +26,16 @@ class HeaderMenu extends Component {
     this.setState({ anchorEl: null });
   };
 
-  logoutAction(){
-    // this.props.handleClose();
-    this.props.logout();
+  async logoutAction(){
+    this.handleClose();
+    await this.props.logout();
+    toasterOven({
+      status:200,
+      data:{
+        msg:`You've successfully logged out!`
+      }
+    })
+    this.props.history.push('/');      
   }
 
   render() {
@@ -60,5 +71,5 @@ function mapStateToProps({auth}){
     auth,
   };
 }
-
+HeaderMenu = withRouter(HeaderMenu);
 export default connect(mapStateToProps, actions)(HeaderMenu);
