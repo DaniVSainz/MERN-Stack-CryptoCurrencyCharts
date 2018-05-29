@@ -13,7 +13,7 @@ class EmailVerification extends Component {
 
   async callVerifyEmail(token){
     let res = await verifyEmail(token);
-    console.log(res);
+    toasterOven(res);
   }
 
   render() {
