@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-//Routing
-import { Link } from 'react-router-dom';
+
 //ReactRedux
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
@@ -11,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 //Our Components
 import HeaderMenu from './HeaderMenu';

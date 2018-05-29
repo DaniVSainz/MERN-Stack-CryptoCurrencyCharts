@@ -1,5 +1,5 @@
 import axios from "axios";
-import { USER_AUTHENTICATE, USER_REGISTER, USER_SET_JWT } from "./types";
+import { USER_AUTHENTICATE, USER_REGISTER, USER_SET_JWT, USER_LOGOUT } from "./types";
 
 export const login = values => async dispatch => {
   let res = await axios.post("/api/users/authenticate", values).catch(err => {
@@ -42,4 +42,15 @@ export const getToken = () => async dispatch => {
     user  = await JSON.parse(user);
   }
   dispatch({ type: USER_SET_JWT, payload: {token,user} });
+}
+
+export const logout = () =>  async dispatch =>{
+  console.log('Logout');
+  localStorage.clear();
+  let user = {
+    user:{
+      username: false
+    }
+  }
+  dispatch({ type: USER_LOGOUT, payload: { user} });
 }
