@@ -15,10 +15,13 @@ class Login extends Component {
   async login(values){
     return this.props.login(values).then(async ()=>{
       toasterOven(this.props.auth.login);
-      await this.props.saveToken(this.props.auth.login.data.token, this.props.auth.login.data.user);
       if(this.props.auth.login.status === 200){
-        this.props.history.push('/');      
+        await this.props.saveToken(this.props.auth.login.data.token, this.props.auth.login.data.user);
+        if(this.props.auth.login.status === 200){
+          this.props.history.push('/');      
+        }   
       }
+
     });
   }
 
