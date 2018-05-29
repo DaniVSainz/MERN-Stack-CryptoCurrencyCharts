@@ -17,7 +17,8 @@ export const register = values => async dispatch => {
 };
 
 export const verifyEmail = async (values) =>{
-  let res = await axios.post("/api/confirmation/verifyEmail", values).catch(err => {
+  let token = {token: values};
+  let res = await axios.post("/api/confirmation/verifyEmail", token).catch(err => {
     return err.response;
   });
   return res;
