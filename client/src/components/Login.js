@@ -9,15 +9,15 @@ import Grid from '@material-ui/core/Grid';
 import renderTextField from '../utils/renderTextField';
 import DoneIcon from '@material-ui/icons/Done';
 
-
 class Login extends Component {
+
   render() {
     const { pristine, submitting, invalid} = this.props;
 
     return (
       <Grid container spacing={24}>
         <Grid item xs={12}>
-          <Paper>
+          <Paper elevation='12'>
             <Typography variant="headline" gutterBottom>
               Login Form
             </Typography>

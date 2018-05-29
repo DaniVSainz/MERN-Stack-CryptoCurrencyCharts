@@ -19,8 +19,10 @@ import Login from './Login'
 import Register from './Register/Register';
 import Header from'./Header';
 
-const drawerWidth = 240;
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+const drawerWidth = 240;
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -88,6 +90,7 @@ const styles = theme => ({
 });
 
 class App extends React.Component {
+  notify = () => toast("Wow so easy !");
 
   render() {
     const { classes, theme } = this.props;
@@ -96,6 +99,7 @@ class App extends React.Component {
       <BrowserRouter>
       <div className={classNames(classes.root)}>
         <Header></Header>
+        <ToastContainer />
         <Drawer
           variant="permanent"
           classes={{

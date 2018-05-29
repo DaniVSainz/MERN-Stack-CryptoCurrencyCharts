@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 
 import renderTextField from '../../utils/renderTextField';
+import { toast } from 'react-toastify';
 
 const styles = theme => ({
   container: {
@@ -41,13 +42,16 @@ class Register extends Component {
   async register(values){
     this.setState({msg:null})
     return this.props.register(values).then(()=>{
+      this.notify(this.props.auth.data.msg);
       this.setState({
         msg: this.props.auth.data.msg,
         status: this.props.auth.data.status,
       })
     });
   }
-  
+
+  notify = (msg) => toast(msg);
+
   render() {
     const { pristine, submitting, invalid} = this.props;
     
