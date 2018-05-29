@@ -32,7 +32,7 @@ class Login extends Component {
               <div>
                 <form onSubmit={this.props.handleSubmit((values)=> this.login(values))}>
                   <Field component={renderTextField} label="username" name="username" type="text"></Field>
-                  <Field component={renderTextField} label="password" name="password" type="text"></Field>
+                  <Field component={renderTextField} label="password" name="password" type="password"></Field>
                   <Button type="submit" variant="raised" color="primary" disabled={ pristine || submitting || invalid} >
                     <DoneIcon />
                     Next

@@ -4,8 +4,17 @@ const passport = require('passport');
 const Token = require('../models/verificationToken')
 const resetPassToken = require('../models/resetToken');
 const User = require('../models/user');
-var crypto = require('crypto');
-var nodemailer = require('nodemailer');
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+
+let httpOrHttps;
+//If in prod use Https for emails if not use http
+if(process.env.NODE_ENV === 'production'){
+   httpOrHttps = 'https://'
+}else{
+   httpOrHttps = 'http://';
+}
+
 
 router.post('/verifyEmail', (req, res, next) => {
 
@@ -76,7 +85,7 @@ router.post('/reset', (req,res,next) => {
         var mailOptions = { from: 'no-reply@yourwebapplication.com',
                              to: user.email, subject: 'Account Password Reset',
                              text: `Hello \n\n 
-                                    You can reset your password by visiting: https://${req.headers.host}/resetpw/${token.token} \n\n
+                                    You can reset your password by visiting: ${httpOrHttps}${req.headers.host}/resetpw/${token.token} \n\n
                                     For your security this link only works for 1 hour.`};
         transporter.sendMail(mailOptions, function (err) {
             if (err) { return res.status(500).send({ msg: err.message }); }

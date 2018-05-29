@@ -22,6 +22,7 @@ import Header from'./Header';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../index.css';
+import EmailVerification from './EmailVerification';
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -122,6 +123,7 @@ class App extends React.Component {
             <Route path="/" component={Home} exact></Route>
             <Route path="/login" component={Login} exact></Route>
             <Route path="/register" component={Register} exact></Route>
+            <Route path="/emailverification/:token" component={EmailVerification} exact></Route>
         </main>
       </div>
       </BrowserRouter>

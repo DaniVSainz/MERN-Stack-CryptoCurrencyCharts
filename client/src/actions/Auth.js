@@ -15,3 +15,10 @@ export const register = values => async dispatch => {
   });
   dispatch({ type: USER_REGISTER, payload: res });
 };
+
+export const verifyEmail = async (values) =>{
+  let res = await axios.post("/api/confirmation/verifyEmail", values).catch(err => {
+    return err.response;
+  });
+  return res;
+}

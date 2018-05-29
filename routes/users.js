@@ -7,8 +7,13 @@ const User = require('../models/user');
 const Token = require('../models/verificationToken')
 var crypto = require('crypto');
 var nodemailer = require('nodemailer');
-
-
+let httpOrHttps;
+//If in prod use Https for emails if not use http
+if(process.env.NODE_ENV === 'production'){
+   httpOrHttps = 'https://'
+}else{
+   httpOrHttps = 'http://';
+}
 
 router.post('/register', async (req,res,next) => {
   try {
@@ -48,7 +53,7 @@ router.post('/register', async (req,res,next) => {
           var transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: process.env.userEmail, pass: process.env.userPass } });
           var mailOptions = { from: 'no-reply@yourwebapplication.com',
                                 to: user.email, subject: 'Account Verification Token',
-                                text: `Hello,\n\n  Please verify your account by clicking the link: \n https://${req.headers.host}/emailVerification/${token.token}  \n` };
+                                text: `Hello,\n\n  Please verify your account by clicking the link: \n ${httpOrHttps}${req.headers.host}/emailVerification/${token.token}  \n` };
           transporter.sendMail(mailOptions, function (err) {
               if (err) { return res.status(500).json({ msg: err.message })};
               res.status(200).json({success: true, msg: "You've successfully registered, please check your email to confirm your email address."});
