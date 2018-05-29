@@ -23,3 +23,9 @@ export const verifyEmail = async (values) =>{
   });
   return res;
 }
+
+export const saveToken = (token, user) => {
+  localStorage.setItem('id_token', token);
+  localStorage.setItem('user', JSON.stringify(user));
+  console.log(localStorage.getItem('user'));
+}
