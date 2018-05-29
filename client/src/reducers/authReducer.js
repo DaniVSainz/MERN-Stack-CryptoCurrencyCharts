@@ -4,7 +4,6 @@ export default function(state={},action){
 
   switch(action.type){
     default:
-      console.log('Auth Reducer default func triggered', state);
       return state;
     
     case USER_AUTHENTICATE:
@@ -14,6 +13,6 @@ export default function(state={},action){
       return action.payload || false ;
       
     case USER_SET_JWT:
-      return {...state, user: action.payload} || false ;
+      return  { ...state , user: action.payload } || false ;
   }
 }

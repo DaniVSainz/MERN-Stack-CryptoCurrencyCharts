@@ -13,12 +13,11 @@ import toasterOven from '../utils/myToasterOven';
 class Login extends Component {
 
   async login(values){
-    return this.props.login(values).then(()=>{
-      console.log(this.props.auth);
+    return this.props.login(values).then(async ()=>{
       toasterOven(this.props.auth.login);
-      this.props.saveToken(this.props.auth.login.data.token, this.props.auth.login.data.user);
+      await this.props.saveToken(this.props.auth.login.data.token, this.props.auth.login.data.user);
       if(this.props.auth.login.status === 200){
-        this.props.reset();
+        this.props.history.push('/');      
       }
     });
   }

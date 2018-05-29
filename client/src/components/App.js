@@ -12,7 +12,7 @@ import { mailFolderListItems, otherMailFolderListItems } from '../utils/tileData
 
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from 'react-redux';
-import {closeDrawer, openDrawer, login} from '../actions';
+import {closeDrawer, openDrawer, login, getToken} from '../actions';
 
 import Home from './Home';
 import Login from './Login'
@@ -94,6 +94,10 @@ const styles = theme => ({
 class App extends React.Component {
   notify = () => toast("Wow so easy !");
 
+  componentDidMount(){
+    this.props.getToken();
+  }
+
   render() {
     const { classes, theme } = this.props;
 
@@ -140,6 +144,6 @@ App.propTypes = {
   theme: PropTypes.object.isRequired,
 };
 
-App = connect( mapStateToProps, {closeDrawer,openDrawer,login} )(App);
+App = connect( mapStateToProps, {closeDrawer,openDrawer,login, getToken} )(App);
 export default   withStyles(styles, { withTheme: true })(App);
 
