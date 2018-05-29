@@ -15,8 +15,8 @@ class Login extends Component {
   async login(values){
     return this.props.login(values).then(()=>{
       toasterOven(this.props.auth);
-      actions.saveToken(this.props.auth.data.token, this.props.auth.data.user)
-      this.props.reset();
+      this.props.saveToken(this.props.auth.data.token, this.props.auth.data.user);
+      console.log(this.props.auth);
     });
   }
 

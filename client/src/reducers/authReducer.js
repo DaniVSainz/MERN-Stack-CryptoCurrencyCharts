@@ -1,4 +1,4 @@
-import {USER_AUTHENTICATE, USER_REGISTER} from '../actions/types';
+import {USER_AUTHENTICATE, USER_REGISTER, USER_SET_JWT} from '../actions/types';
 
 export default function(state={},action){
 
@@ -12,5 +12,7 @@ export default function(state={},action){
     case USER_REGISTER:
       return action.payload || false ;
       
+    case USER_SET_JWT:
+      return action.payload || false ;
   }
 }

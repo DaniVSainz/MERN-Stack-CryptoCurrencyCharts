@@ -1,8 +1,7 @@
 import axios from "axios";
-import { USER_AUTHENTICATE, USER_REGISTER} from "./types";
+import { USER_AUTHENTICATE, USER_REGISTER, USER_SET_JWT } from "./types";
 
 export const login = values => async dispatch => {
-  console.log('login')
   let res = await axios.post("/api/users/authenticate", values).catch(err => {
     return err.response;
   });
@@ -24,8 +23,14 @@ export const verifyEmail = async (values) =>{
   return res;
 }
 
-export const saveToken = (token, user) => {
+export const saveToken = (token, user) => async dispatch => {
   localStorage.setItem('id_token', token);
   localStorage.setItem('user', JSON.stringify(user));
-  console.log(localStorage.getItem('user'));
+  dispatch({ type: USER_SET_JWT, payload: {token,user} });
+}
+
+export const getToken = () => async dispatch => {
+  let token = await localStorage.getItem('id_token');
+  let user = await localStorage.getItem('user');
+  dispatch({ type: USER_SET_JWT, payload: {token,user} });
 }
