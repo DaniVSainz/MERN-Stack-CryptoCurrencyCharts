@@ -32,6 +32,15 @@ export const saveToken = (token, user) => async dispatch => {
 export const getToken = () => async dispatch => {
   let token = await localStorage.getItem('id_token');
   let user = await localStorage.getItem('user');
-  user = JSON.parse(user);
+  if(user === null ){
+    user = {
+      user:{
+        username: false
+      }
+    }
+  }else{
+    user  = await JSON.parse(user);
+
+  }
   dispatch({ type: USER_SET_JWT, payload: {token,user} });
 }

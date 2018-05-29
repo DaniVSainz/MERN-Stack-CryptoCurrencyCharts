@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import {openDrawer} from '../actions';
+import * as actions from '../actions';
 
 import PropTypes from 'prop-types';
 
@@ -83,9 +83,23 @@ const styles = theme => ({
 
 class Header extends Component {
   
+  componentDidMount(){
+    this.props.getToken();
+  }
+
+  renderUserName(){
+    console.log(this.props.auth)
+    if(this.props.auth.user){
+      return(
+        <Typography variant="body1" color="inherit" noWrap>
+        {this.props.auth.user.user.username}
+      </Typography>
+      )
+    }
+  }
+
   render() {
     const { classes } = this.props;
-    let  username  = this.props.auth.user.user.username;
 
     return (
       <AppBar
@@ -105,11 +119,12 @@ class Header extends Component {
           CryptoNalysis
         </Typography>
         <div style={{ marginLeft: 'auto'}}>
-          {username && (
+          {/* {this.props.auth.user.user.username && (
             <Typography variant="body1" color="inherit" noWrap>
-              {username}
+              {this.props.auth.user}
             </Typography>
-          )}
+          )} */}
+          {this.renderUserName()}
           <Link to="/login"><Button color="primary" variant="raised">Login</Button></Link>
           <Link to="/register"><Button color="primary" variant="raised">Register</Button></Link>
         </div>
@@ -120,13 +135,16 @@ class Header extends Component {
 }
 
 function mapStateToProps({ui,auth}){
-  return{ ui,auth };
+  return{ 
+    ui,
+    auth,
+  };
 }
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
 // Header = withStyles(styles, { withTheme: true })(Header);
-// export default  connect( mapStateToProps,  )(Header);
-export default connect(mapStateToProps, {openDrawer})(withStyles(styles, { withTheme: true })(Header));
+// export default  connect( mapStateToProps,  actions)(Header);
+export default connect(mapStateToProps, actions)(withStyles(styles, { withTheme: true })(Header));
 

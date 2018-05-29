@@ -3,7 +3,7 @@ import {USER_AUTHENTICATE, USER_REGISTER, USER_SET_JWT} from '../actions/types';
 let initialState = {
   user:{
     user:{
-      username: null
+      username: false
     }
   }
 }
@@ -12,10 +12,10 @@ export default function(state=initialState,action){
 
   switch(action.type){
     default:
-      return state;
+      return {...state};
     
     case USER_AUTHENTICATE:
-      return {login: action.payload} || false ;
+      return {...state, login: action.payload} || false ;
     
     case USER_REGISTER:
       return action.payload || false ;
