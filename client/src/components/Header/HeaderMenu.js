@@ -47,7 +47,9 @@ class HeaderMenu extends Component {
         >
           <MenuItem onClick={this.handleClose}><Link to="/login"><Button color="primary" variant="raised">Login</Button></Link></MenuItem>
           <MenuItem onClick={this.handleClose}><Link to="/register"><Button color="primary" variant="raised">Register</Button></Link></MenuItem>
-          <MenuItem onClick={this.logoutAction.bind(this)}>Logout</MenuItem>
+          {this.props.auth.user.user.username && (
+            <MenuItem onClick={this.logoutAction.bind(this)}>Logout</MenuItem>
+          )}
         </Menu>
       </div>
     );
