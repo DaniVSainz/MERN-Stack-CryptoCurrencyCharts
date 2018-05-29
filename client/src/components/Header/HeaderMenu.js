@@ -8,13 +8,11 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 
 import { connect } from 'react-redux';
 
 import toasterOven from '../../utils/myToasterOven';
-import Header from './Header';
 
 const styles = theme => ({
   menuDiv:{
