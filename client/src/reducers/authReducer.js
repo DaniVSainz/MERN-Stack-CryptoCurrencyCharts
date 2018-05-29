@@ -1,6 +1,14 @@
 import {USER_AUTHENTICATE, USER_REGISTER, USER_SET_JWT} from '../actions/types';
 
-export default function(state={},action){
+let initialState = {
+  user:{
+    user:{
+      username: null
+    }
+  }
+}
+
+export default function(state=initialState,action){
 
   switch(action.type){
     default:

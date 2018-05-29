@@ -85,6 +85,7 @@ class Header extends Component {
   
   render() {
     const { classes } = this.props;
+    let  username  = this.props.auth.user.user.username;
 
     return (
       <AppBar
@@ -104,7 +105,11 @@ class Header extends Component {
           CryptoNalysis
         </Typography>
         <div style={{ marginLeft: 'auto'}}>
-
+          {username && (
+            <Typography variant="body1" color="inherit" noWrap>
+              {username}
+            </Typography>
+          )}
           <Link to="/login"><Button color="primary" variant="raised">Login</Button></Link>
           <Link to="/register"><Button color="primary" variant="raised">Register</Button></Link>
         </div>
@@ -115,8 +120,7 @@ class Header extends Component {
 }
 
 function mapStateToProps({ui,auth}){
-  console.log({ui,auth})
-  return{ ui,auth};
+  return{ ui,auth };
 }
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
