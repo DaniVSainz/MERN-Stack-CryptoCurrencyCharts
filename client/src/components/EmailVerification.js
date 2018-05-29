@@ -5,15 +5,15 @@ import { verifyEmail } from '../actions/'
 import toasterOven from '../utils/myToasterOven';
 
 class EmailVerification extends Component {
-  state = { isVerified:false }
+  state = { isVerified:false, res: null }
 
   componentDidMount(){
     this.callVerifyEmail(this.props.match.params.token);
   }
 
   async callVerifyEmail(token){
-    let res = await verifyEmail(token);
-    toasterOven(res);
+    this.setState({res: await verifyEmail(token) }) 
+    toasterOven(this.state.res);
   }
 
   render() {
