@@ -104,7 +104,7 @@ class App extends React.Component {
         <Drawer
           variant="permanent"
           classes={{
-            paper: classNames(classes.drawerPaper, !this.props.ui.open && classes.drawerPaperClose),
+            paper: classNames(classes.drawerPaper, !this.props.ui.open && classes.drawerPaperClose, 'myDrawer'),
           }}
           open={this.props.ui.open}
         >

@@ -9,6 +9,13 @@ input:-webkit-autofill:active {
 a{
   text-decoration:none;
 }
+header{
+  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+}
+main{
+  background: rgb(1,4,2);
+  background: linear-gradient(110deg, rgba(1,4,2,0.8099614845938375) 0%, rgba(27, 27, 27, 0.87) 55%, rgb(10, 25, 51) 93%);
+}
 .errorToast{
   background: #ED213A;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
@@ -26,4 +33,8 @@ a{
   -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
+.myDrawer{
+  background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgb(152, 152, 152) 100%);
 }
