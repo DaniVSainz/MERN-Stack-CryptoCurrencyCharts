@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import AppBar from '@material-ui/core/AppBar';
 import classNames from 'classnames';
+//Routing
+import { Link } from 'react-router-dom';
+//ReactRedux
+import { connect } from 'react-redux';
+import * as actions from '../../actions';
+//Material UI- Imports
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-
 import { withStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-
+import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-
+//Our Components
+import HeaderMenu from './HeaderMenu';
+import AppBar from '@material-ui/core/AppBar';
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -125,8 +127,7 @@ class Header extends Component {
             </Typography>
           )} */}
           {this.renderUserName()}
-          <Link to="/login"><Button color="primary" variant="raised">Login</Button></Link>
-          <Link to="/register"><Button color="primary" variant="raised">Register</Button></Link>
+          <HeaderMenu></HeaderMenu>
         </div>
       </Toolbar>
     </AppBar>

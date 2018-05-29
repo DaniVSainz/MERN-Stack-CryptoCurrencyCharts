@@ -40,7 +40,6 @@ export const getToken = () => async dispatch => {
     }
   }else{
     user  = await JSON.parse(user);
-
   }
   dispatch({ type: USER_SET_JWT, payload: {token,user} });
 }

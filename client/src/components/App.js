@@ -17,7 +17,7 @@ import {closeDrawer, openDrawer} from '../actions';
 import Home from './Home';
 import Login from './Login'
 import Register from './Register/Register';
-import Header from'./Header';
+import Header from'./Header/Header';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
