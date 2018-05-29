@@ -10,6 +10,9 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
+import Chip from '@material-ui/core/Chip';
+import FaceIcon from '@material-ui/icons/Face';
 import PropTypes from 'prop-types';
 //Our Components
 import HeaderMenu from './HeaderMenu';
@@ -79,23 +82,15 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
   },
+  chip: {
+    margin: theme.spacing.unit,
+  },
 });
 
 class Header extends Component {
   
   componentDidMount(){
     this.props.getToken();
-  }
-
-  renderUserName(){
-    console.log(this.props.auth)
-    if(this.props.auth.user){
-      return(
-        <Typography variant="body1" color="inherit" noWrap>
-        {this.props.auth.user.user.username}
-      </Typography>
-      )
-    }
   }
 
   render() {
@@ -118,13 +113,18 @@ class Header extends Component {
         <Typography variant="title" color="inherit" noWrap>
           CryptoNalysis
         </Typography>
-        <div style={{ marginLeft: 'auto'}}>
-          {/* {this.props.auth.user.user.username && (
-            <Typography variant="body1" color="inherit" noWrap>
-              {this.props.auth.user}
-            </Typography>
-          )} */}
-          {this.renderUserName()}
+        <div style={{ marginLeft: 'auto', display: 'flex'}}>
+          {this.props.auth.user.user.username && (
+            <Chip
+            avatar={
+              <Avatar>
+                <FaceIcon />
+              </Avatar>
+            }
+            label={this.props.auth.user.user.username}
+            className={classes.chip}
+          />
+          )}
           <HeaderMenu></HeaderMenu>
         </div>
       </Toolbar>

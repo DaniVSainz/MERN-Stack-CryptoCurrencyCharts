@@ -7,11 +7,20 @@ import * as actions from '../../actions';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+
 import { connect } from 'react-redux';
 
 import toasterOven from '../../utils/myToasterOven';
 import Header from './Header';
 
+const styles = theme => ({
+  menuDiv:{
+    display:'flex'
+  }
+})
 
 class HeaderMenu extends Component {
   state = {
@@ -39,10 +48,11 @@ class HeaderMenu extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     const { anchorEl } = this.state;
 
     return (
-      <div>
+      <div className={classes.menuDiv}>
         <Button
           aria-owns={anchorEl ? 'simple-menu' : null}
           aria-haspopup="true"
@@ -71,5 +81,9 @@ function mapStateToProps({auth}){
     auth,
   };
 }
+HeaderMenu.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 HeaderMenu = withRouter(HeaderMenu);
+HeaderMenu = withStyles(styles)(HeaderMenu);
 export default connect(mapStateToProps, actions)(HeaderMenu);
