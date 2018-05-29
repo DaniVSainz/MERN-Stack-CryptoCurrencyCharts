@@ -10,9 +10,9 @@ import registerValidator from '../../utils/registerValidation';
 import DoneIcon from '@material-ui/icons/Done';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-
 import renderTextField from '../../utils/renderTextField';
-import { toast } from 'react-toastify';
+import toasterOven from '../../utils/myToasterOven';
+
 
 const styles = theme => ({
   container: {
@@ -35,22 +35,13 @@ function validate(values){
 }
 
 class Register extends Component {
-  state={
-    msg: null,
-    status: null
-  }
+
   async register(values){
     this.setState({msg:null})
     return this.props.register(values).then(()=>{
-      this.notify(this.props.auth.data.msg);
-      this.setState({
-        msg: this.props.auth.data.msg,
-        status: this.props.auth.data.status,
-      })
+      toasterOven(this.props.auth);
     });
   }
-
-  notify = (msg) => toast(msg);
 
   render() {
     const { pristine, submitting, invalid} = this.props;
@@ -60,13 +51,6 @@ class Register extends Component {
         <Typography variant="headline" gutterBottom>
           Register Form
         </Typography>
-          {this.state.msg && (
-            <Paper>
-              <Typography variant="body1" gutterBottom>
-                {this.state.msg}
-              </Typography>
-            </Paper>
-          )}
         <div>
           <form onSubmit={this.props.handleSubmit((values)=> this.register(values))}>
             <Field component={renderTextField} autoFocus autoComplete="username" label="username" name="username" type="text"></Field>
