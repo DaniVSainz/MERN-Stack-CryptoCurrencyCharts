@@ -4,15 +4,16 @@ export default function(state={},action){
 
   switch(action.type){
     default:
+      console.log('Auth Reducer default func triggered', state);
       return state;
     
     case USER_AUTHENTICATE:
-      return action.payload || false ;
-
+      return {login: action.payload} || false ;
+    
     case USER_REGISTER:
       return action.payload || false ;
       
     case USER_SET_JWT:
-      return action.payload || false ;
+      return {...state, user: action.payload} || false ;
   }
 }

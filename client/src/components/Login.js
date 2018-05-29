@@ -14,9 +14,12 @@ class Login extends Component {
 
   async login(values){
     return this.props.login(values).then(()=>{
-      toasterOven(this.props.auth);
-      this.props.saveToken(this.props.auth.data.token, this.props.auth.data.user);
       console.log(this.props.auth);
+      toasterOven(this.props.auth.login);
+      this.props.saveToken(this.props.auth.login.data.token, this.props.auth.login.data.user);
+      if(this.props.auth.login.status === 200){
+        this.props.reset();
+      }
     });
   }
 
@@ -32,8 +35,8 @@ class Login extends Component {
             </Typography>
               <div>
                 <form onSubmit={this.props.handleSubmit((values)=> this.login(values))}>
-                  <Field component={renderTextField} label="username" name="username" type="text"></Field>
-                  <Field component={renderTextField} label="password" name="password" type="password"></Field>
+                  <Field component={renderTextField} autoComplete="username" label="username" name="username" type="text"></Field>
+                  <Field component={renderTextField} autoComplete="current-password" label="password" name="password" type="password"></Field>
                   <Button type="submit" variant="raised" color="primary" disabled={ pristine || submitting || invalid} >
                     <DoneIcon />
                     Next
