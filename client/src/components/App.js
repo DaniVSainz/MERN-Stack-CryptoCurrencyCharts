@@ -23,6 +23,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../index.css';
 import EmailVerification from './EmailVerification';
+import CryptoCurrencies from './CryptoCurrencies';
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -124,6 +125,7 @@ class App extends React.Component {
             <Route path="/login" component={Login} exact></Route>
             <Route path="/register" component={Register} exact></Route>
             <Route path="/emailverification/:token" component={EmailVerification} exact></Route>
+            <Route path="/cryptocurrencies" component={CryptoCurrencies} exact></Route>
         </main>
       </div>
       </BrowserRouter>

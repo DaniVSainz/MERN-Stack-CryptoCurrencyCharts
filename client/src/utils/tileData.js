@@ -12,16 +12,20 @@ import MailIcon from '@material-ui/icons/Mail';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ReportIcon from '@material-ui/icons/Report';
 import FingerPrintIcon from '@material-ui/icons/Fingerprint';
+import ViewListIcon from '@material-ui/icons/ViewList';
+
 import { Link } from 'react-router-dom';
 
 export const mailFolderListItems = (
   <div>
-    <ListItem button>
-      <ListItemIcon>
-        <InboxIcon />
-      </ListItemIcon>
-      <ListItemText primary="Inbox" />
-    </ListItem>
+    <Link to="/cryptocurrencies">
+      <ListItem button>
+        <ListItemIcon>
+          <ViewListIcon />
+        </ListItemIcon>
+        <ListItemText primary="Cryptocurrencies" />
+      </ListItem>
+    </Link>
     <ListItem button>
       <ListItemIcon>
         <StarIcon />
