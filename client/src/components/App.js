@@ -23,7 +23,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../index.css';
 import EmailVerification from './EmailVerification';
-import CryptoCurrencies from './CryptoCurrencies';
+import CryptoCurrencies from './CryptoCurrency/CryptoCurrencies.js';
 
 const drawerWidth = 240;
 const styles = theme => ({
