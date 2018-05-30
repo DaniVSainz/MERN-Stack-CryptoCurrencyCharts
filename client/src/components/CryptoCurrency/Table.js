@@ -32,6 +32,20 @@ class SmartTable extends Component {
                 height={20}
               />
               <Column
+                label='img'
+                dataKey='name'
+                width={width}
+                height={20}
+                cellRenderer={function({cellData}){
+                  return(
+                    //React rendering tips
+                    // https://stackoverflow.com/questions/37644265/correct-path-for-img-on-react-js?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+                    // <span><img src={require(`../../assets/images/coins/${cellData.split(' ').join('_')}.png`)} class="icon-img" />{cellData}</span>
+                    <span><img src={window.location.origin + `/assets/images/coins/${cellData.split(' ').join('_')}.png`} class="icon-img" />{cellData}</span>
+                  )
+                }}
+              />
+              <Column
                 label='Name'
                 dataKey='name'
                 width={width}
@@ -50,18 +64,6 @@ class SmartTable extends Component {
                 width={width}
                 height={20}
               />
-              <Column
-                label='img'
-                dataKey='name'
-                width={width}
-                height={20}
-                cellRenderer={function({cellData}){
-                  return(
-                    <span><img src={require(`../../assets/images/coins/${cellData.split(' ').join('_')}.png`)} class="icon-img" />{cellData}</span>
-                  )
-                }}
-              />
-
             </Table>
             )}
           </AutoSizer>
