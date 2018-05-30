@@ -51,4 +51,5 @@ main{
   box-shadow: 10px 11px 19px 2px rgba(0,0,0,0.73);
   border-radius: 15px;
   padding:15px;
+  flex-direction: column;
 }
