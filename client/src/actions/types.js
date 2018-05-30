@@ -6,4 +6,6 @@ export const USER_LOGOUT = 'user_logout'
 //UI STUFF
 export const OPEN_DRAWER = "open_drawer";
 export const CLOSE_DRAWER = "close_drawer";
+//CryptoCurrency Page
+export const GET_CRYPTOCURRENCIES = "get_cryptocurrencies";
 

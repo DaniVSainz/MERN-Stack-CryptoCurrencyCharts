@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions/'
+
+import { Typography } from '@material-ui/core';
 
 class CryptoCurrencies extends Component {
-  state = {  }
   render() {
     return (
       <div>
-        ChartComponent
+        <Typography variant="headline" gutterBottom>
+          CryptoCurrency Page
+        </Typography>
       </div>
     );
   }
 }
 
-export default CryptoCurrencies;
+function mapStateToProps({cryptocurrency}){
+  return {cryptocurrency}
+}
+export default connect(mapStateToProps, actions)(CryptoCurrencies);
