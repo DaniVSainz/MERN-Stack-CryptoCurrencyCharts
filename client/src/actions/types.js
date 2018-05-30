@@ -8,4 +8,5 @@ export const OPEN_DRAWER = "open_drawer";
 export const CLOSE_DRAWER = "close_drawer";
 //CryptoCurrency Page
 export const GET_CRYPTOCURRENCIES = "get_cryptocurrencies";
+export const GET_CRYPTOCURRENCY = 'get_cryptocurrency'
 

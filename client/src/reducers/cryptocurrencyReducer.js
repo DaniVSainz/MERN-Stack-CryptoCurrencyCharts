@@ -1,12 +1,17 @@
-import { GET_CRYPTOCURRENCIES } from '../actions/types';
-
-export default function(state=null,action){
+import { GET_CRYPTOCURRENCIES, GET_CRYPTOCURRENCY } from '../actions/types';
+let initialState = {
+  cryptocurrencies: false
+}
+export default function(state=initialState,action){
 
   switch(action.type){
     default:
-      return {...state};
+      return state;
     
     case GET_CRYPTOCURRENCIES:
-      return {...state, cryptocurrency: action.payload }
+      return {...state, cryptocurrencies: action.payload }
+
+    case GET_CRYPTOCURRENCY:
+    return {...state, }
   }
 }
