@@ -17,3 +17,13 @@ header{
   background: -webkit-linear-gradient(to left, #c94b4b, #4b134f); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #c94b4b, #4b134f); 
 }
+
+
+charts
+==========================
+http://recharts.org/en-US/api/Cross
+https://github.com/reactjs/react-chartjs
+https://github.com/uber/react-vis
+https://github.com/FormidableLabs/victory
+https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Get%20Started%20with%20ECharts%20in%205%20minutes  
+https://www.taucharts.com/

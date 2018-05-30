@@ -1,6 +1,7 @@
 import { GET_CRYPTOCURRENCIES, GET_CRYPTOCURRENCY } from '../actions/types';
 let initialState = {
-  cryptocurrencies: false
+  cryptocurrencies: false,
+  cryptocurrency:[{},{days:false},{}]
 }
 export default function(state=initialState,action){
 
@@ -12,6 +13,6 @@ export default function(state=initialState,action){
       return {...state, cryptocurrencies: action.payload }
 
     case GET_CRYPTOCURRENCY:
-    return {...state, }
+    return {...state, cryptocurrency: action.payload}
   }
 }

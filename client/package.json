@@ -22,6 +22,7 @@
     "react-scripts": "1.1.4",
     "react-stripe-checkout": "^2.6.3",
     "react-virtualized": "^9.19.1",
+    "recharts": "^1.0.0-beta.10",
     "redux": "^4.0.0",
     "redux-form": "^7.3.0",
     "redux-thunk": "^2.2.0"
