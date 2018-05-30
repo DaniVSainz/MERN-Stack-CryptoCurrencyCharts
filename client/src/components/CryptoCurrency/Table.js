@@ -7,8 +7,9 @@ import * as actions from '../../actions'
 
 class SmartTable extends Component {
 
-  componentDidMount(){
-    this.props.getAllCryptoCurrencies();
+  async componentDidMount(){
+    await this.props.getAllCryptoCurrencies();
+    console.log(this.props.cryptocurrency.cryptocurrency)
   }
 
   renderTable(){
@@ -38,11 +39,29 @@ class SmartTable extends Component {
               />
               <Column
                 width={width}
-                label='Description'
+                label='Symbol'
                 dataKey='symbol'
                 height={20}
                 style={{color:'black'}}
               />
+              <Column
+                label='Price'
+                dataKey='price_usd'
+                width={width}
+                height={20}
+              />
+              <Column
+                label='img'
+                dataKey='name'
+                width={width}
+                height={20}
+                cellRenderer={function({cellData}){
+                  return(
+                    <span><img src={require(`../../assets/images/coins/${cellData.split(' ').join('_')}.png`)} class="icon-img" />{cellData}</span>
+                  )
+                }}
+              />
+
             </Table>
             )}
           </AutoSizer>
@@ -59,41 +78,7 @@ class SmartTable extends Component {
   render() {
     return (
       <div style={{ flex: '1 1 auto' }}>
-          {/* {this.renderTable()} */}
-          {this.props.cryptocurrency.cryptocurrency && (
-            <AutoSizer>
-            {({ height, width }) => (
-              <Table
-              width={width}
-              height={height}
-              headerHeight={20}
-              rowHeight={30}
-              rowCount={this.props.cryptocurrency.cryptocurrency.length}
-              rowGetter={({ index }) => this.props.cryptocurrency.cryptocurrency[index]}
-            > 
-              <Column
-                label='Rank'
-                dataKey='rank'
-                width={width}
-                height={20}
-              />
-              <Column
-                label='Name'
-                dataKey='name'
-                width={width}
-                height={20}
-              />
-              <Column
-                width={width}
-                label='Description'
-                dataKey='symbol'
-                height={20}
-                style={{color:'black'}}
-              />
-            </Table>
-            )}
-          </AutoSizer>
-          )}
+          {this.renderTable()}
       </div>
     );
   }

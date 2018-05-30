@@ -7,7 +7,6 @@ export default function(state=null,action){
       return {...state};
     
     case GET_CRYPTOCURRENCIES:
-      console.log(action.payload)
       return {...state, cryptocurrency: action.payload }
   }
 }
