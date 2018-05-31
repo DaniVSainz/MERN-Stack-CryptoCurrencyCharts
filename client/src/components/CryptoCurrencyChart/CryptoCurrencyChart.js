@@ -131,7 +131,7 @@ class CryptoCurrencyChart extends Component {
               colorStops: [{
                   offset: 0, color: '#26df8b' // color at 0% position
               }, {
-                  offset: 1, color: '#fff' // color at 100% position
+                  offset: 1, color: '#302b63' // color at 100% position
               }],
               globalCoord: false // false by default
           }
@@ -165,8 +165,11 @@ class CryptoCurrencyChart extends Component {
   render() {
     return (
       <div className="myContainer">
-        {this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency && (
-          <CryptoCurrencyHeader  cryptoCurrency={this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency}/>
+        {this.props.cryptocurrency.cryptocurrency[0].pair && (
+          <CryptoCurrencyHeader 
+            cryptoCurrency={this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency}
+            pair={this.props.cryptocurrency.cryptocurrency[0].pair}
+          />
         )}
         {this.renderLineChart()}
       </div>
