@@ -9,7 +9,7 @@ var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 let httpOrHttps;
 //If in prod use Https for emails if not use http
-if(process.env.NODE_ENV === 'production'){
+if(process.env.emails === 'https'){
    httpOrHttps = 'https://'
 }else{
    httpOrHttps = 'http://';
