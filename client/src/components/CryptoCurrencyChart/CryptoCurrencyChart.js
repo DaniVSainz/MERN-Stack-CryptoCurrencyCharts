@@ -35,21 +35,6 @@ class CryptoCurrencyChart extends Component {
     }
     return {
       backgroundColor: 'transparent',
-      // backgroundColor: {
-      //   type: 'linear',
-      //   x: 0,
-      //   y: 1,
-      //   x2: 0,
-      //   y2: 1,
-      //   colorStops: [{
-      //       offset: 0, color: '#24243e' // color at 0% position
-      //   },{
-      //     offset: 0.5, color: '#302b63' // color at 0% position
-      //   },{
-      //       offset: 1, color: '#0f0c29' // color at 100% position
-      //   }],
-      //   globalCoord: false // false by default
-      // },
       color: ['#26df8b'],
       tooltip: {
         trigger: 'axis',
@@ -135,7 +120,22 @@ class CryptoCurrencyChart extends Component {
           type: 'line',
           smooth: true,
           data:this.state.priceData,
-          itemStyle: {normal: {areaStyle: {type: 'default'}}},
+          // itemStyle: {normal: {areaStyle: {type: 'default'}}},
+          itemStyle: {normal: {areaStyle: {
+            color: {
+              type: 'linear',
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [{
+                  offset: 0, color: '#26df8b' // color at 0% position
+              }, {
+                  offset: 1, color: '#fff' // color at 100% position
+              }],
+              globalCoord: false // false by default
+          }
+          }}},
         },
       ],
     };
