@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../actions'
 import ReactEcharts from 'echarts-for-react';
+import CryptoCurrencyHeader from './CryptoCurrencyHeader'
 
 class CryptoCurrencyChart extends Component {
 
@@ -24,12 +25,8 @@ class CryptoCurrencyChart extends Component {
     await this.setState({pair: this.props.cryptocurrency.cryptocurrency[0].pair});
   }
 
-  logProps(){
-    console.log(this.props.cryptocurrency.cryptocurrency[1].days);
-    console.log(this.state.dayData);
-  }
-
   getOption = () => {
+    console.log(this.props);
     let chartColors ={
       line: 'white'
     }
@@ -50,7 +47,7 @@ class CryptoCurrencyChart extends Component {
       dataZoom: [{
         type: 'inside',
         start: 0,
-        end: 100
+        end: 100,
     }, {
         start: 0,
         end: 10,
@@ -62,6 +59,9 @@ class CryptoCurrencyChart extends Component {
             shadowColor: 'rgba(0, 0, 0, 0.9)',
             shadowOffsetX: 2,
             shadowOffsetY: 2
+        },
+        textStyle:{
+          color: chartColors.line
         }
     }],
       xAxis: [ 
@@ -104,7 +104,7 @@ class CryptoCurrencyChart extends Component {
           },
           splitLine: {
             lineStyle: {
-              color: chartColors.line,
+              color: 'rgba(255, 255, 255, 0.12)',
             },
           },
           axisLabel: {
@@ -165,6 +165,9 @@ class CryptoCurrencyChart extends Component {
   render() {
     return (
       <div className="myContainer">
+        {this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency && (
+          <CryptoCurrencyHeader  cryptoCurrency={this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency}/>
+        )}
         {this.renderLineChart()}
       </div>
     );
