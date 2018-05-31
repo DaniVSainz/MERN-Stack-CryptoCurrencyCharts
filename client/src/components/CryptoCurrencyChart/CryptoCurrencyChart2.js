@@ -30,34 +30,55 @@ class CryptoCurrencyChart extends Component {
   }
 
   getOption = () => {
+    let chartColors ={
+      line: 'white'
+    }
     return {
-      backgroundColor: 'white',
-      color: ['green', 'yellow'],
+      backgroundColor: 'transparent',
+      // backgroundColor: {
+      //   type: 'linear',
+      //   x: 0,
+      //   y: 1,
+      //   x2: 0,
+      //   y2: 1,
+      //   colorStops: [{
+      //       offset: 0, color: '#24243e' // color at 0% position
+      //   },{
+      //     offset: 0.5, color: '#302b63' // color at 0% position
+      //   },{
+      //       offset: 1, color: '#0f0c29' // color at 100% position
+      //   }],
+      //   globalCoord: false // false by default
+      // },
+      color: ['#26df8b'],
       tooltip: {
-        trigger: 'none',
-        axisPointer: {
-          type: 'cross',
-        },
+        trigger: 'axis',
+        position: function (pt) {
+            return [pt[0], '10%'];
+        }
       },
       toolbox:{
         feature:{
           saveAsImage:{}
         }
       },
-      dataZoom: [
-        {
-            id: 'dataZoomX',
-            type: 'slider',
-            xAxisIndex: [0],
-            filterMode: 'filter',
-        },
-        {
-            id: 'dataZoomY',
-            type: 'slider',
-            yAxisIndex: [0],
-            filterMode: 'empty',
+      dataZoom: [{
+        type: 'inside',
+        start: 0,
+        end: 100
+    }, {
+        start: 0,
+        end: 10,
+        handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+        handleSize: '80%',
+        handleStyle: {
+            color: '#fff',
+            shadowBlur: 3,
+            shadowColor: 'rgba(0, 0, 0, 0.9)',
+            shadowOffsetX: 2,
+            shadowOffsetY: 2
         }
-    ],
+    }],
       xAxis: [ 
         {
           boundaryGap:false,
@@ -68,12 +89,12 @@ class CryptoCurrencyChart extends Component {
           axisLine: {
             onZero: false,
             lineStyle: {
-              color: 'black',
+              color: chartColors.line,
             },
           },
           axisLabel: {
             textStyle: {
-              color: 'black',
+              color: chartColors.line,
             },
             showMaxLabel: true
           },
@@ -93,17 +114,17 @@ class CryptoCurrencyChart extends Component {
           min:0,
           axisLine: {
             lineStyle: {
-              color: 'black',
+              color: chartColors.line,
             },
           },
           splitLine: {
             lineStyle: {
-              color: 'black',
+              color: chartColors.line,
             },
           },
           axisLabel: {
             textStyle: {
-              color: 'black',
+              color: chartColors.line,
             },
             showMaxLabel: true
           },
@@ -114,29 +135,21 @@ class CryptoCurrencyChart extends Component {
           type: 'line',
           smooth: true,
           data:this.state.priceData,
+          itemStyle: {normal: {areaStyle: {type: 'default'}}},
         },
       ],
     };
   };
 
   renderLineChart(){
-    let code = "<ReactEcharts \n" +
-    "  option={this.getOtion()} \n" +
-    "  style={{height: '350px', width: '100%'}}  \n" +
-    "  className='react_for_echarts' />";
     if(this.state.pair){
       return(
         <div className='examples'>
           <div className='parent'>
-            <label> render a Simple echart With <strong>option and height</strong>: </label>
             <ReactEcharts
               option={this.getOption()}
               style={{height: '350px', width: '100%'}}
               className='react_for_echarts' />
-            <label> code below: </label>
-            <pre>
-              <code>{code}</code>
-            </pre>
           </div>
         </div>
       )
@@ -152,8 +165,6 @@ class CryptoCurrencyChart extends Component {
   render() {
     return (
       <div className="myContainer">
-        Hi from cryptocurrency chart
-        <button onClick={()=> this.logProps()}></button>
         {this.renderLineChart()}
       </div>
     );

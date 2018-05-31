@@ -14,7 +14,6 @@
     "@material-ui/core": "^1.1.0",
     "@material-ui/icons": "^1.1.0",
     "axios": "^0.18.0",
-    "chart.js": "^1.1.1",
     "echarts": "^4.1.0",
     "echarts-for-react": "^2.0.11",
     "materialize-css": "^0.100.2",
@@ -25,7 +24,6 @@
     "react-scripts": "1.1.4",
     "react-stripe-checkout": "^2.6.3",
     "react-virtualized": "^9.19.1",
-    "recharts": "^1.0.0-beta.10",
     "redux": "^4.0.0",
     "redux-form": "^7.3.0",
     "redux-thunk": "^2.2.0"
