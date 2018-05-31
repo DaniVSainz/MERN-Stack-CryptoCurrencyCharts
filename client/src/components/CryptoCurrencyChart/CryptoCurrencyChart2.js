@@ -5,72 +5,117 @@ import ReactEcharts from 'echarts-for-react';
 
 class CryptoCurrencyChart extends Component {
 
-  componentDidMount(){
-    this.props.getCryptoCurrency(this.props.match.params.symbol);
-    console.log(this.props.cryptocurrency)
+  state={
+    priceData:[],
+    dayData:[],
+    days:[],
+    pair:false,
+    cryptoCurrency:false
+  }
+
+  async componentDidMount(){
+    await this.props.getCryptoCurrency(this.props.match.params.symbol);
+    await this.setState({days: this.props.cryptocurrency.cryptocurrency[1].days});
+    await this.setState({cryptoCurrency : this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency });
+    await this.state.days.forEach(element => {
+      this.state.dayData.push(element.date);
+      this.state.priceData.push(element.openingPrice.replace(/,/g,""));
+    });
+    await this.setState({pair: this.props.cryptocurrency.cryptocurrency[0].pair});
   }
 
   logProps(){
     console.log(this.props.cryptocurrency.cryptocurrency[1].days);
+    console.log(this.state.dayData);
   }
 
   getOption = () => {
     return {
-      title: {
-        text: '堆叠区域图'
+      backgroundColor: 'white',
+      color: ['green', 'yellow'],
+      tooltip: {
+        trigger: 'none',
+        axisPointer: {
+          type: 'cross',
+        },
       },
-      tooltip : {
-        trigger: 'axis'
-      },
-      legend: {
-        data:['邮件营销','联盟广告','视频广告']
-      },
-      toolbox: {
-        feature: {
-          saveAsImage: {}
+      toolbox:{
+        feature:{
+          saveAsImage:{}
         }
       },
-      grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-      },
-      xAxis : [
+      dataZoom: [
         {
-          type : 'category',
-          boundaryGap : false,
-          data : ['周一','周二','周三','周四','周五','周六','周日']
-        }
-      ],
-      yAxis : [
-        {
-          type : 'value'
-        }
-      ],
-      series : [
-        {
-          name:'邮件营销',
-          type:'line',
-          stack: '总量',
-          areaStyle: {normal: {}},
-          data:[120, 132, 101, 134, 90, 230, 210]
+            id: 'dataZoomX',
+            type: 'slider',
+            xAxisIndex: [0],
+            filterMode: 'filter',
         },
         {
-          name:'联盟广告',
-          type:'line',
-          stack: '总量',
-          areaStyle: {normal: {}},
-          data:[220, 182, 191, 234, 290, 330, 310]
-        },
-        {
-          name:'视频广告',
-          type:'line',
-          stack: '总量',
-          areaStyle: {normal: {}},
-          data:[150, 232, 201, 154, 190, 330, 410]
+            id: 'dataZoomY',
+            type: 'slider',
+            yAxisIndex: [0],
+            filterMode: 'empty',
         }
-      ]
+    ],
+      xAxis: [ 
+        {
+          boundaryGap:false,
+          type: 'category',
+          axisTick: {
+            alignWithLabel: true,
+          },
+          axisLine: {
+            onZero: false,
+            lineStyle: {
+              color: 'black',
+            },
+          },
+          axisLabel: {
+            textStyle: {
+              color: 'black',
+            },
+            showMaxLabel: true
+          },
+          axisPointer: {
+            label: {formatter: params => {
+              return (
+                params.value + (params.seriesData.length ? ' ：Price $' + params.seriesData[0].data : '')
+              );
+            }},
+          },
+          data: this.state.dayData,
+        },
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          min:0,
+          axisLine: {
+            lineStyle: {
+              color: 'black',
+            },
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'black',
+            },
+          },
+          axisLabel: {
+            textStyle: {
+              color: 'black',
+            },
+            showMaxLabel: true
+          },
+        },
+      ],
+      series: [
+        {
+          type: 'line',
+          smooth: true,
+          data:this.state.priceData,
+        },
+      ],
     };
   };
 
@@ -79,7 +124,7 @@ class CryptoCurrencyChart extends Component {
     "  option={this.getOtion()} \n" +
     "  style={{height: '350px', width: '100%'}}  \n" +
     "  className='react_for_echarts' />";
-    if(this.props.cryptocurrency.cryptocurrency[1].days){
+    if(this.state.pair){
       return(
         <div className='examples'>
           <div className='parent'>
