@@ -25,6 +25,7 @@ import '../index.css';
 import EmailVerification from './EmailVerification';
 import CryptoCurrencies from './CryptoCurrency/CryptoCurrencies.js';
 import CryptoCurrencyChart from './CryptoCurrencyChart/CryptoCurrencyChart';
+import Logout from './logout';
 
 import Transitions from '../utils/transitions'
 import styled from 'styled-components'
@@ -134,7 +135,6 @@ class App extends React.Component {
             <Perspective>
               <Transitions pageKey={location.key} {...location.state}>
                 <Switch location={location}>
-                {/* Uncomented this and transitions still worked, leaving incase breakage in future */}
                   <Route path="/" component={CryptoCurrencies} exact></Route>
                   <Route path="/home" component={Home} exact></Route>
                   <Route path="/login" component={Login} exact></Route>
@@ -142,6 +142,7 @@ class App extends React.Component {
                   <Route path="/emailverification/:token" component={EmailVerification} exact></Route>
                   <Route path="/cryptocurrencies" component={CryptoCurrencies} exact></Route>
                   <Route path="/chart/:symbol" component={CryptoCurrencyChart} exact></Route>
+                  <Route path="/logout" component={Logout} exact></Route>
                 </Switch>
               </Transitions>
             </Perspective>

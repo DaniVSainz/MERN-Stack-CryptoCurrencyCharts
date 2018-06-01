@@ -34,7 +34,7 @@ class Login extends Component {
             </Typography>
               <div>
                 <form onSubmit={this.props.handleSubmit((values)=> this.login(values))}>
-                  <Field component={renderTextField} autoComplete="username" label="username" name="username" type="text"></Field>
+                  <Field autoFocus component={renderTextField} autoComplete="username" label="username" name="username" type="text"></Field>
                   <Field component={renderTextField} autoComplete="current-password" label="password" name="password" type="password"></Field>
                   <Button type="submit" variant="raised" color="primary" disabled={ pristine || submitting || invalid} >
                     <DoneIcon />

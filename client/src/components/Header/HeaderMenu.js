@@ -36,6 +36,7 @@ class HeaderMenu extends Component {
   };
 
   async logoutAction(){
+    console.log('logoutAction',this.props.location.pathname)
     this.handleClose();
     await this.props.logout();
     toasterOven({
@@ -44,7 +45,7 @@ class HeaderMenu extends Component {
         msg:`You've successfully logged out!`
       }
     })
-    this.props.history.push('/');      
+    this.props.history.push('/logout');      
   }
 
   render() {
