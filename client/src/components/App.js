@@ -98,8 +98,7 @@ const styles = theme => ({
 });
 
 const Perspective = styled.div`
-width: 100vw;
-height: 100vh;
+
 perspective: 1200px;
 `
 
@@ -136,7 +135,9 @@ class App extends React.Component {
             <Perspective>
               <Transitions pageKey={location.key} {...location.state}>
                 <Switch location={location}>
+                {/* Uncomented this and transitions still worked, leaving incase breakage in future */}
                   <Route path="/" component={CryptoCurrencies} exact></Route>
+                  <Route path="/home" component={Home} exact></Route>
                   <Route path="/login" component={Login} exact></Route>
                   <Route path="/register" component={Register} exact></Route>
                   <Route path="/emailverification/:token" component={EmailVerification} exact></Route>

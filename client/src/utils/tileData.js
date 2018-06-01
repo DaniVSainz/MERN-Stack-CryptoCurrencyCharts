@@ -26,12 +26,14 @@ export const mailFolderListItems = (
         <ListItemText primary="Cryptocurrencies" />
       </ListItem>
     </Link>
-    <ListItem button>
-      <ListItemIcon>
-        <StarIcon />
-      </ListItemIcon>
-      <ListItemText primary="Starred" />
-    </ListItem>
+    <Link to="/home">
+      <ListItem button>
+        <ListItemIcon>
+          <StarIcon />
+        </ListItemIcon>
+        <ListItemText primary="Starred" />
+      </ListItem>
+    </Link>
     <ListItem button>
       <ListItemIcon>
         <SendIcon />
