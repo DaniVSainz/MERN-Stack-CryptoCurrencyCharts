@@ -22,7 +22,6 @@ const theme = createMuiTheme({
     fontFamily: [
       'exo',
       'Roboto',
-
     ].join(','),
   },
 });

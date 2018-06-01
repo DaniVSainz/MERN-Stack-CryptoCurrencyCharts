@@ -45,7 +45,6 @@ export default ({cryptoCurrency, pair}) => {
         Primary
       </Button>
       </div>
-      <Divider></Divider>
     </div>
   )
 };

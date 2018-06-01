@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../actions'
 import ReactEcharts from 'echarts-for-react';
-import CryptoCurrencyHeader from './CryptoCurrencyHeader'
+import CryptoCurrencyHeader from './CryptoCurrencyHeader';
+import Divider from '@material-ui/core/Divider';
+
 
 class CryptoCurrencyChart extends Component {
 
@@ -152,6 +154,7 @@ class CryptoCurrencyChart extends Component {
     if(this.state.pair){
       return(
         <div className='examples'>
+          <hr className="myHr"></hr>
           <div className='parent'>
             <ReactEcharts
               option={this.getOption()}
