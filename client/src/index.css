@@ -53,3 +53,12 @@ main{
   padding:15px;
   flex-direction: column;
 }
+
+/* Table */
+.tableRowStyles{
+  background-color: #0a1933;
+  border-bottom: 1px solid black;
+}
+.tableRowStyles:hover{
+  background-color: gray;
+}

@@ -37,7 +37,7 @@ class CryptoCurrencyChart extends Component {
         trigger: 'axis',
         position: function (pt) {
             return [pt[0], '10%'];
-        }
+        },
       },
       toolbox:{
         feature:{
@@ -83,10 +83,17 @@ class CryptoCurrencyChart extends Component {
             },
             showMaxLabel: true
           },
+          // axisPointer: {
+          //   label: {formatter: params => {
+          //     return (
+          //       params.value + (params.seriesData.length ? ' ：Price $' + params.seriesData[0].data : '')
+          //     );
+          //   }},
+          // },
           axisPointer: {
             label: {formatter: params => {
               return (
-                params.value + (params.seriesData.length ? ' ：Price $' + params.seriesData[0].data : '')
+                `${params.value }`
               );
             }},
           },

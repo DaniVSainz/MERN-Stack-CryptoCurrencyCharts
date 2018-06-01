@@ -19,6 +19,7 @@ class SmartTable extends Component {
   }
 
   renderTable(){
+    let columnHeight = 45;
     if(this.props.cryptocurrency.cryptocurrencies){
       return(
           <AutoSizer>
@@ -26,25 +27,24 @@ class SmartTable extends Component {
               <Table
               width={width}
               height={height}
-              headerHeight={20}
-              rowHeight={30}
+              headerHeight={75}
+              rowHeight={50}
               rowCount={this.props.cryptocurrency.cryptocurrencies.length}
               rowGetter={({ index }) => this.props.cryptocurrency.cryptocurrencies[index]}
               onRowClick={({ event, index, rowData }) => {
                 return this.navigateToArea(rowData)
-              }} 
+              }}
+              rowClassName='tableRowStyles'
             > 
               <Column
                 label='Rank'
                 dataKey='rank'
                 width={width}
-                height={20}
               />
               <Column
                 label='img'
                 dataKey='name'
                 width={width}
-                height={20}
                 cellRenderer={function({cellData}){
                   return(
                     //React rendering tips
@@ -58,14 +58,13 @@ class SmartTable extends Component {
                 width={width}
                 label='Symbol'
                 dataKey='symbol'
-                height={20}
+                height={columnHeight}
                 style={{color:'black'}}
               />
               <Column
                 label='Price'
                 dataKey='price_usd'
                 width={width}
-                height={20}
               />
             </Table>
             )}
