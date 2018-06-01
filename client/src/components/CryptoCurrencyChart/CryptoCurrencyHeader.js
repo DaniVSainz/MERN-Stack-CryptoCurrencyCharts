@@ -6,7 +6,6 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
 export default ({cryptoCurrency, pair}) => {
-  console.log(cryptoCurrency, pair)
   return(
     <div style={{display:'flex', justifyContent:'space-between'}}>
       <div>

@@ -17,6 +17,7 @@ class CryptoCurrencyChart extends Component {
   }
 
   async componentDidMount(){
+    console.log('History=', this.props.history)
     await this.props.getCryptoCurrency(this.props.match.params.symbol);
     await this.setState({days: this.props.cryptocurrency.cryptocurrency[1].days});
     await this.setState({cryptoCurrency : this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency });
@@ -167,7 +168,7 @@ class CryptoCurrencyChart extends Component {
           <div >
             <ReactEcharts
               option={this.getOption()}
-              style={{height: '400px', width: '90%', margin:'0 auto'}}
+              style={{height: '400px', width: '90%', margin:'0'}}
               className='react_for_echarts' />
           </div>
         </div>

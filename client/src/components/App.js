@@ -26,6 +26,8 @@ import EmailVerification from './EmailVerification';
 import CryptoCurrencies from './CryptoCurrency/CryptoCurrencies.js';
 import CryptoCurrencyChart from './CryptoCurrencyChart/CryptoCurrencyChart';
 
+// import Transitions from '../utils/transitions'
+
 
 const drawerWidth = 240;
 const styles = theme => ({
