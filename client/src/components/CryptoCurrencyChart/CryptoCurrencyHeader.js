@@ -1,8 +1,12 @@
 import React from 'react';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 export default ({cryptoCurrency, pair}) => {
+  console.log(cryptoCurrency, pair)
   return(
     <div style={{display:'flex', justifyContent:'space-between'}}>
       <div>
@@ -19,7 +23,13 @@ export default ({cryptoCurrency, pair}) => {
       </div>
       <div>
         <Typography variant="title" gutterBottom>
-          Pairing: ${cryptoCurrency.price_usd}
+          Percent Change 1 Hour: {cryptoCurrency.percent_change_1h}%
+        </Typography>
+        <Typography variant="title" gutterBottom>
+          Percent Change 24 Hour: {cryptoCurrency.percent_change_24h}%
+        </Typography>
+        <Typography variant="title" gutterBottom>
+          Percent Change 7 Days: {cryptoCurrency.percent_change_7d}%
         </Typography>
       </div>
       <div>
@@ -28,9 +38,9 @@ export default ({cryptoCurrency, pair}) => {
         </Typography>
       </div>
       <div>
-        <Typography variant="title" gutterBottom>
-          Pairing: ${cryptoCurrency.price_usd}
-        </Typography>
+      <Button variant="outlined" color="primary" >
+        Primary
+      </Button>
       </div>
       <Divider></Divider>
     </div>

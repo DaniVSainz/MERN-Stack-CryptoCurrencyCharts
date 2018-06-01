@@ -62,3 +62,8 @@ main{
 .tableRowStyles:hover{
   background-color: gray;
 }
+
+.green{
+  color:'#26df8b';
+  background-color: '#26df8b';
+}
