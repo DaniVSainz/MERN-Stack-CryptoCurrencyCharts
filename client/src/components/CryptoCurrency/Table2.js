@@ -12,7 +12,8 @@ const columns = [{
 }, {
 	Header: 'Name',
 	accessor: 'name',
-	Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+	// Cell: props => <span className='number'>{props.value}</span> 
+	Cell: props => <span><img src={window.location.origin + `/assets/images/coins/${props.value.split(' ').join('_')}.png`} alt={`${props.value} icon`}/>{props.value}</span>
 }, {
 	id: 'friendName', // Required because our accessor is not a string
 	Header: 'Friend Name',
@@ -37,6 +38,9 @@ class SmartTable extends Component {
 						<ReactTable
 							data={this.props.cryptocurrency.cryptocurrencies}
 							columns={columns}
+							getTrProps={(state, rowInfo, column, instance) => ({
+								onClick: e => this.navigateToArea(rowInfo.original)
+							})}
 						/>
 					</div>
       )
