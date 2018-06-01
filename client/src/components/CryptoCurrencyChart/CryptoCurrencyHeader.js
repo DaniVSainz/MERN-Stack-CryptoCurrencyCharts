@@ -34,7 +34,10 @@ export default ({cryptoCurrency, pair}) => {
       </div>
       <div>
         <Typography variant="title" gutterBottom>
-          Pairing: ${cryptoCurrency.price_usd}
+          24H Volume: ${cryptoCurrency['24h_volume_usd']}
+        </Typography>
+        <Typography variant="title" gutterBottom>
+          Info Update: {new Date(cryptoCurrency.updatedAt).toLocaleString()}
         </Typography>
       </div>
       <div>

@@ -16,7 +16,15 @@ import App from './components/App'
 const theme = createMuiTheme({
   palette: {
     type: 'dark',
-  }
+  },
+  typography: {
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      'exo',
+      'Roboto',
+
+    ].join(','),
+  },
 });
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 

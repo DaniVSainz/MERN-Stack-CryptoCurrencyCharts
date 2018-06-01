@@ -123,7 +123,7 @@ class App extends React.Component {
           <List>{otherMailFolderListItems}</List>
         </Drawer>
           <main className={classes.content}>
-            <Route path="/" component={Home} exact></Route>
+            <Route path="/" component={CryptoCurrencies} exact></Route>
             <Route path="/login" component={Login} exact></Route>
             <Route path="/register" component={Register} exact></Route>
             <Route path="/emailverification/:token" component={EmailVerification} exact></Route>
