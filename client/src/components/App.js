@@ -98,7 +98,6 @@ const styles = theme => ({
 });
 
 const Perspective = styled.div`
-
 perspective: 1200px;
 `
 

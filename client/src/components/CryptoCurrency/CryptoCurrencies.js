@@ -10,14 +10,16 @@ class CryptoCurrencies extends Component {
 
   render() {
     return (
-      <div style={{display:'flex', height:'-webkit-fill-available', flexDirection:"column"}}>
+      <div style={{position:'absolute', width:'100%'}}>
         <div>
-          <Typography variant="headline" gutterBottom>
-            CryptoCurrency Page
-          </Typography>
-        </div>
-        <div style={{backgroundColor: 'white', display:'flex', flex:'1'}}>
-          <SmartTable></SmartTable> 
+          <div>
+            <Typography variant="headline" gutterBottom>
+              CryptoCurrency Page
+            </Typography>
+          </div>
+          <div style={{backgroundColor: 'white',}}>
+            <SmartTable></SmartTable> 
+          </div>
         </div>
       </div>
     );
