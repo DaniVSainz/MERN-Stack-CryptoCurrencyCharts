@@ -34,12 +34,14 @@ export const mailFolderListItems = (
         <ListItemText primary="Starred" />
       </ListItem>
     </Link>
-    <ListItem button>
-      <ListItemIcon>
-        <SendIcon />
-      </ListItemIcon>
-      <ListItemText primary="Send mail" />
-    </ListItem>
+    <Link to="/chat">
+      <ListItem button>
+        <ListItemIcon>
+          <SendIcon />
+        </ListItemIcon>
+        <ListItemText primary="Send mail" />
+      </ListItem>
+    </Link>
     <ListItem button>
       <ListItemIcon>
         <DraftsIcon />

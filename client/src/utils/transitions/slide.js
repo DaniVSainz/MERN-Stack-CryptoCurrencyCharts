@@ -1,7 +1,7 @@
 import { injectGlobal, keyframes } from 'styled-components'
 
 const transitionClassName = 'slide'
-const duration = 1000
+const duration = 600
 
 const slideOut = keyframes`
 0% { }

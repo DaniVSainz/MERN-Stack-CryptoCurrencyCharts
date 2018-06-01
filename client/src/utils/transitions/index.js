@@ -7,7 +7,7 @@ const childFactoryCreator = (props) => child => React.cloneElement(child, props)
 
 export default ({ transition = '', duration = 0, pageKey, children }) => (
   <TransitionGroup
-    childFactory={childFactoryCreator({ classNames: 'slide', timeout: 1000 })}
+    childFactory={childFactoryCreator({ classNames: 'scale', timeout: 500 })}
   >
     <CSSTransition key={pageKey}>
       {/* you should wrap CSSTransition child in a div in case it could be null

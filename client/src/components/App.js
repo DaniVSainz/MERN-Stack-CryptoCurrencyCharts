@@ -26,10 +26,10 @@ import EmailVerification from './EmailVerification';
 import CryptoCurrencies from './CryptoCurrency/CryptoCurrencies.js';
 import CryptoCurrencyChart from './CryptoCurrencyChart/CryptoCurrencyChart';
 import Logout from './logout';
+import TestChatBox from './TestChatBox';
 
 import Transitions from '../utils/transitions'
 import styled from 'styled-components'
-
 
 const drawerWidth = 240;
 const styles = theme => ({
@@ -143,6 +143,7 @@ class App extends React.Component {
                   <Route path="/cryptocurrencies" component={CryptoCurrencies} exact></Route>
                   <Route path="/chart/:symbol" component={CryptoCurrencyChart} exact></Route>
                   <Route path="/logout" component={Logout} exact></Route>
+                  <Route path="/chat" component={TestChatBox} exact></Route>
                 </Switch>
               </Transitions>
             </Perspective>
