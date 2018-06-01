@@ -65,7 +65,16 @@ class CryptoCurrencyChart extends Component {
         textStyle:{
           color: chartColors.line
         }
-    }],
+    },
+    {
+      id: 'dataZoomY',
+      type: 'slider',
+      yAxisIndex: [0],
+      filterMode: 'empty',
+      startValue: Math.min(...this.state.priceData),
+      endValue: Math.max(...this.state.priceData)
+
+  }],
       xAxis: [ 
         {
           boundaryGap:false,
@@ -153,12 +162,12 @@ class CryptoCurrencyChart extends Component {
   renderLineChart(){
     if(this.state.pair){
       return(
-        <div className='examples'>
+        <div >
           <hr className="myHr"></hr>
-          <div className='parent'>
+          <div >
             <ReactEcharts
               option={this.getOption()}
-              style={{height: '350px', width: '100%'}}
+              style={{height: '400px', width: '90%', margin:'0 auto'}}
               className='react_for_echarts' />
           </div>
         </div>
