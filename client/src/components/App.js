@@ -10,7 +10,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { mailFolderListItems, otherMailFolderListItems } from '../utils/tileData';
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from 'react-redux';
 import {closeDrawer, openDrawer} from '../actions';
 
@@ -26,7 +26,8 @@ import EmailVerification from './EmailVerification';
 import CryptoCurrencies from './CryptoCurrency/CryptoCurrencies.js';
 import CryptoCurrencyChart from './CryptoCurrencyChart/CryptoCurrencyChart';
 
-// import Transitions from '../utils/transitions'
+import Transitions from '../utils/transitions'
+import styled from 'styled-components'
 
 
 const drawerWidth = 240;
@@ -96,14 +97,19 @@ const styles = theme => ({
   },
 });
 
+const Perspective = styled.div`
+width: 100vw;
+height: 100vh;
+perspective: 1200px;
+`
+
 class App extends React.Component {
-  notify = () => toast("Wow so easy !");
 
   render() {
     const { classes, theme } = this.props;
 
     return (
-      <BrowserRouter>
+      <BrowserRouter history={this.props.history}>
       <div className={classNames(classes.root)}>
         <Header></Header>
         <ToastContainer />
@@ -125,12 +131,22 @@ class App extends React.Component {
           <List>{otherMailFolderListItems}</List>
         </Drawer>
           <main className={classes.content}>
-            <Route path="/" component={CryptoCurrencies} exact></Route>
-            <Route path="/login" component={Login} exact></Route>
-            <Route path="/register" component={Register} exact></Route>
-            <Route path="/emailverification/:token" component={EmailVerification} exact></Route>
-            <Route path="/cryptocurrencies" component={CryptoCurrencies} exact></Route>
-            <Route path="/chart/:symbol" component={CryptoCurrencyChart} exact></Route>
+          <Route
+            render={({ location }) => (
+            <Perspective>
+              <Transitions pageKey={location.key} {...location.state}>
+                <Switch location={location}>
+                  <Route path="/" component={CryptoCurrencies} exact></Route>
+                  <Route path="/login" component={Login} exact></Route>
+                  <Route path="/register" component={Register} exact></Route>
+                  <Route path="/emailverification/:token" component={EmailVerification} exact></Route>
+                  <Route path="/cryptocurrencies" component={CryptoCurrencies} exact></Route>
+                  <Route path="/chart/:symbol" component={CryptoCurrencyChart} exact></Route>
+                </Switch>
+              </Transitions>
+            </Perspective>
+            )}
+          />
         </main>
       </div>
       </BrowserRouter>
