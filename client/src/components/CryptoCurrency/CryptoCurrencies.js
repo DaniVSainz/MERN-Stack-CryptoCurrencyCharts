@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Typography } from '@material-ui/core';
 
-import SmartTable from './Table'
+import SmartTable from './Table2'
 
 class CryptoCurrencies extends Component {
 
