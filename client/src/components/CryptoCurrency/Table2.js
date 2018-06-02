@@ -27,7 +27,6 @@ class SmartTable extends Component {
 
   async componentDidMount(){
     await this.props.getAllCryptoCurrencies();
-    console.log(this.props.cryptocurrency.cryptocurrencies)
   }
 
   navigateToArea(rowData){

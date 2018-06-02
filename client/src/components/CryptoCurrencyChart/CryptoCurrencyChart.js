@@ -22,9 +22,6 @@ class CryptoCurrencyChart extends Component {
   }
 
   async setProps(){
-    console.log('====================================');
-    console.log(this.props.cryptoCurrency);
-    console.log('====================================');
     await this.setState({days: this.props.cryptocurrency.cryptocurrency[1].days});
     await this.setState({cryptoCurrency : this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency });
     if(this.state.days){
@@ -37,7 +34,6 @@ class CryptoCurrencyChart extends Component {
   }
 
   getOption = () => {
-    console.log(this.props);
     let chartColors ={
       line: 'white'
     }

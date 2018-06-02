@@ -24,7 +24,6 @@ export default function(state=initialState,action){
       return  { ...state , user: action.payload } || false ;
 
     case USER_LOGOUT:
-      console.log('user logout', action.payload)
       return action.payload
   }
 }

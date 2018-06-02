@@ -37,7 +37,6 @@ class Register extends Component {
   async register(values){
     return this.props.register(values).then(()=>{
       toasterOven(this.props.auth.register);
-      console.log(this.props.auth)
       if(this.props.auth.register.status === 200){
         this.props.reset();
       }
