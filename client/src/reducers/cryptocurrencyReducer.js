@@ -13,6 +13,6 @@ export default function(state=initialState,action){
       return {...state, cryptocurrencies: action.payload }
 
     case GET_CRYPTOCURRENCY:
-    return {...state, cryptocurrency: action.payload}
+      return {...state, cryptocurrency: action.payload}
   }
 }

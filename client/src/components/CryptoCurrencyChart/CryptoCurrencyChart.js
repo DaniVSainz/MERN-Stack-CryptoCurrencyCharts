@@ -17,14 +17,22 @@ class CryptoCurrencyChart extends Component {
   }
 
   async componentDidMount(){
-    console.log('History=', this.props.history)
     await this.props.getCryptoCurrency(this.props.match.params.symbol);
+    this.setProps();
+  }
+
+  async setProps(){
+    console.log('====================================');
+    console.log(this.props.cryptoCurrency);
+    console.log('====================================');
     await this.setState({days: this.props.cryptocurrency.cryptocurrency[1].days});
     await this.setState({cryptoCurrency : this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency });
-    await this.state.days.forEach(element => {
-      this.state.dayData.push(element.date);
-      this.state.priceData.push(element.openingPrice.replace(/,/g,""));
-    });
+    if(this.state.days){
+      await this.state.days.forEach(element => {
+        this.state.dayData.push(element.date);
+        this.state.priceData.push(element.openingPrice.replace(/,/g,""));
+      });
+    }
     await this.setState({pair: this.props.cryptocurrency.cryptocurrency[0].pair});
   }
 
@@ -185,7 +193,7 @@ class CryptoCurrencyChart extends Component {
   render() {
     return (
       <div className="myContainer">
-        {this.props.cryptocurrency.cryptocurrency[0].pair && (
+        {this.state.pair && (
           <CryptoCurrencyHeader 
             cryptoCurrency={this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency}
             pair={this.props.cryptocurrency.cryptocurrency[0].pair}

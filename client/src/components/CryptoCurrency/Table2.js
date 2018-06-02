@@ -10,14 +10,17 @@ const columns = [{
 	Header: 'Rank',
 	accessor: 'rank' // String-based value accessors!
 }, {
-	Header: 'Name',
+	Header: 'Currency',
 	accessor: 'name',
 	// Cell: props => <span className='number'>{props.value}</span> 
 	Cell: props => <span><img src={window.location.origin + `/assets/images/coins/${props.value.split(' ').join('_')}.png`} alt={`${props.value} icon`}/>{props.value}</span>
 }, {
-	id: 'friendName', // Required because our accessor is not a string
-	Header: 'Friend Name',
+	Header: 'Symbol',
 	accessor: 'symbol'// Custom value accessors!
+},
+{
+	Header: 'Price',
+	accessor: 'price_usd'// Custom value accessors!
 }]
 
 class SmartTable extends Component {
