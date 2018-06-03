@@ -60,8 +60,10 @@ server .listen(PORT, () => {
 const io = require('socket.io')(server);
 
 io.on('connection', function (socket) {
+  console.log('New Connection')
   let msgs = [`There's no message, try sending one`];
-  socket.emit('connection', msgs)
+
+  socket.emit('connected', `You're connected to the chat`);
 
   socket.on('my other event', function (data) {
     console.log(data);

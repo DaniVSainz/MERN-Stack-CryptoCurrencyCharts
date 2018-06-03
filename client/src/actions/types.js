@@ -9,4 +9,7 @@ export const CLOSE_DRAWER = "close_drawer";
 //CryptoCurrency Page
 export const GET_CRYPTOCURRENCIES = "get_cryptocurrencies";
 export const GET_CRYPTOCURRENCY = 'get_cryptocurrency'
+//Sockets
+export const SOCKET_CONNECT = 'socket_connect'
+
 

@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import Draggable from 'react-draggable';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import socket from '../utils/socket'
 import TextField from '@material-ui/core/TextField';
 
 class ChatBox extends Component {
 
   state={
-    socket: socket(),
     textFieldValue: '',
-    msgs: []
   }
 
   emitMsg(){
@@ -23,7 +20,7 @@ class ChatBox extends Component {
   }
 
   renderMsgs(){
-    this.state.msgs.forEach((msg)=>{
+    this.props.chat.msgs.forEach((msg)=>{
       return(
         <span style={{color:'black'}}>
           {msg}
@@ -79,9 +76,10 @@ class ChatBox extends Component {
   }
 }
 
-function mapStateToProps({auth}){
+function mapStateToProps({auth,chat}){
   return {
-    user: auth.user.user
+    user: auth.user.user,
+    chat: chat
   }
 }
 

@@ -1,8 +1,8 @@
 import {} from '../actions/types';
 
 let initialState = {
-  user: false,
-  msgs:[]
+  msgs:[],
+  connected:false
 }
 
 export default function(state=initialState,action){
