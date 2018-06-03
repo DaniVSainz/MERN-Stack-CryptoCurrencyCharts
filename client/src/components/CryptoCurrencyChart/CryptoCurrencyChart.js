@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import * as actions from '../../actions'
 import ReactEcharts from 'echarts-for-react';
 import CryptoCurrencyHeader from './CryptoCurrencyHeader';
-import Divider from '@material-ui/core/Divider';
 
 
 class CryptoCurrencyChart extends Component {

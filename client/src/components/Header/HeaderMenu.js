@@ -14,7 +14,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 
 import toasterOven from '../../utils/myToasterOven';
-import { slide, scale } from '../../utils/transitions'
 
 const styles = theme => ({
   menuDiv:{

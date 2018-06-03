@@ -19,7 +19,7 @@ import Login from './Login'
 import Register from './Register/Register';
 import Header from'./Header/Header';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../index.css';
 import EmailVerification from './EmailVerification';
