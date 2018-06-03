@@ -10,9 +10,8 @@ var logger = require('morgan');
 
 
 const app = express();
-var server = require('http').Server(app);
-server.origins = '*localhost:3000'
-var io = require('socket.io')(server,  { origins: '*localhost:3000'} );
+const server = require('http').Server(app);
+
 
 mongoose.Promise = require('bluebird');
 mongoose.connect(process.env.mongoUrl);
@@ -50,20 +49,21 @@ if(process.env.NODE_ENV === 'production'){
   })
 }
 
+//Your local dev port or for heroku use the env port
+const PORT = process.env.PORT || 5000;
+server .listen(PORT, () => {
+  console.log(`App listening on ${PORT}`);
+});
+
+//Sockets
+//Sockets
+const io = require('socket.io')(server);
+
 io.on('connection', function (socket) {
   console.log('connection')
   socket.emit('news', { hello: 'world' });
   socket.on('my other event', function (data) {
     console.log(data);
   });
-  socket.on('channel-name', ()=>{
-    console.log('AJSDIJHASIKJDJNAKJSDJNKJASJDKJASJNDKASJDKAJDKASJDK');
-  })
 });
 
-//Your local dev port or for heroku use the env port
-const PORT = process.env.PORT || 5000;
-server .listen(PORT, () => {
-  console.log(`App listening on ${PORT}`);
-});
-module.exports = app;

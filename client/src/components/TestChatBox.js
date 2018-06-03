@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
 import Draggable from 'react-draggable';
-const io = require('socket.io-client')
-const socket = io.connect('http://localhost:5000')
-console.log(socket)
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import socket from '../utils/socket'
 
 class ChatBox extends Component {
 
+  state={
+    socket: socket(),
+  }
+
+  emitMsg(){
+    console.log(this.props)
+    this.socket.emit('my other event', 'Hi from react')
+  }
+
+  canJoinChat(){
+    if(this.props.auth.user.user){}
+  }
 
   render() {
+
     return (
       <div style={{backgroundColor: 'white'}}>
-        <div >
-          The best chat box around
-        </div>
         <div>
           <Draggable
           axis="x"
@@ -28,6 +38,7 @@ class ChatBox extends Component {
             <div style={{border:'1px solid black', width:'fit-content'}}>
               <div className="handle">Drag from here</div>
               <div>This readme is really dragging on...</div>
+              <button onClick={()=> this.emitMsg()}>Connect to chat</button>
             </div>
           </Draggable>
         </div>
@@ -36,4 +47,10 @@ class ChatBox extends Component {
   }
 }
 
-export default ChatBox;
+function mapStateToProps({auth}){
+  return {
+    user: auth.user.user
+  }
+}
+
+export default connect(mapStateToProps, actions)(ChatBox);
