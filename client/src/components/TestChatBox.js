@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import Draggable from 'react-draggable';
+const io = require('socket.io-client')
+const socket = io.connect('http://localhost:5000')
+console.log(socket)
 
 class ChatBox extends Component {
-  state = {  }
+
 
   render() {
     return (
