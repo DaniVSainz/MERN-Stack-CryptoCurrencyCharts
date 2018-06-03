@@ -9,7 +9,8 @@ class ChatBox extends Component {
 
   state={
     socket: socket(),
-    textFieldValue: ''
+    textFieldValue: '',
+    msgs: []
   }
 
   emitMsg(){
@@ -19,6 +20,16 @@ class ChatBox extends Component {
 
   canJoinChat(){
     if(this.props.auth.user.user){}
+  }
+
+  renderMsgs(){
+    this.state.msgs.forEach((msg)=>{
+      return(
+        <span style={{color:'black'}}>
+          {msg}
+        </span>
+      )
+    })
   }
 
   async handleTextFieldChange(e){
@@ -46,8 +57,12 @@ class ChatBox extends Component {
           >
             <div style={{border:'1px solid black', width:'fit-content'}}>
               <div className="handle">Drag from here</div>
-              <div>This readme is really dragging on...</div>
-              <button onClick={this.emitMsg.bind(this)}>Connect to chat</button>
+              <div>
+                <ul>
+                  {this.renderMsgs()}
+                </ul>
+              </div>
+              <button onClick={this.emitMsg.bind(this)}>Send msg chat</button>
               <TextField label="Message...." 
                 value={this.state.textFieldValue}
                 onChange={this.handleTextFieldChange.bind(this)}
