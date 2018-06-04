@@ -64,7 +64,7 @@ io.on('connection', function (socket) {
 
   socket.on('message', function (msg) {
     msgs.push(msg);
-    socket.emit('broadcastMsg', msgs)
+    io.emit('broadcastMsg', msgs)
   });
 
 });
