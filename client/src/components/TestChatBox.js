@@ -45,37 +45,33 @@ class ChatBox extends Component {
   render() {
 
     return (
-      <div style={{backgroundColor: 'white'}}>
-        <div>
-          <Draggable
-          axis="x"
-          handle=".handle"
-          defaultPosition={{x: 0, y: 0}}
-          position={null}
-          grid={[25, 25]}
-          onStart={this.handleStart}
-          onDrag={this.handleDrag}
-          onStop={this.handleStop}
-          
+      <Draggable
+      axis="both"
+      handle=".handle"
+      defaultPosition={{x: 0, y: 0}}
+      position={null}
+      grid={[25, 25]}
+      onStart={this.handleStart}
+      onDrag={this.handleDrag}
+      onStop={this.handleStop}
+      bounds="body"
+      >
+        <div style={{border:'1px solid black', width:'fit-content',backgroundColor: 'white', zIndex:1202, height:'fit-content', position:'absolute',bottom:'10px',right:'10px'}}>
+          <div className="handle">Drag from here</div>
+          <div>
+            {this.renderMsgs()}
+          </div>
+          <button onClick={() => this.emitMsg()}>Send msg chat</button>
+          <TextField label="Message...." 
+            value={this.state.textFieldValue}
+            onChange={this.handleTextFieldChange.bind(this)}
+            onSubmit={()=> this.emitMsg()}
+            style={{color:'black'}}
           >
-            <div style={{border:'1px solid black', width:'fit-content'}}>
-              <div className="handle">Drag from here</div>
-              <div>
-                {this.renderMsgs()}
-              </div>
-              <button onClick={() => this.emitMsg()}>Send msg chat</button>
-              <TextField label="Message...." 
-                value={this.state.textFieldValue}
-                onChange={this.handleTextFieldChange.bind(this)}
-                onSubmit={()=> this.emitMsg()}
-                style={{color:'black'}}
-              >
-                {this.state.textFieldValue}
-              </TextField>
-            </div>
-          </Draggable>
+            {this.state.textFieldValue}
+          </TextField>
         </div>
-      </div>
+      </Draggable>
     );
   }
 }
