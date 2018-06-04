@@ -7,7 +7,7 @@
     "server": "nodemon server.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server \" \"npm run client \" ",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm i --prefix client && npm run build --prefix client"
+    "pm2Build": "npm i && npm i --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
