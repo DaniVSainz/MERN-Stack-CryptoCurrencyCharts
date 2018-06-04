@@ -1,4 +1,4 @@
-import {SOCKET_CONNECT} from '../actions/types';
+import {SOCKET_CONNECT, SOCKET_MSGS} from '../actions/types';
 
 let initialState = {
   msgs:[],
@@ -12,7 +12,11 @@ export default function(state=initialState,action){
       return state;
 
     case SOCKET_CONNECT:
-      console.log('Socket_CONNECT')
-      return {...state, connected:true}
+      console.log('Socket_CONNECT');
+      return {connected:true,msgs:action.payload[1]}
+
+      case SOCKET_MSGS:
+      console.log('socket_msgs');
+      return {...state, msgs:action.payload}
   }
 }

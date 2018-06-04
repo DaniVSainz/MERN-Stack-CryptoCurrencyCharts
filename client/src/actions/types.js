@@ -11,5 +11,6 @@ export const GET_CRYPTOCURRENCIES = "get_cryptocurrencies";
 export const GET_CRYPTOCURRENCY = 'get_cryptocurrency'
 //Sockets
 export const SOCKET_CONNECT = 'socket_connect'
+export const SOCKET_MSGS = 'socket_msgs'
 
 

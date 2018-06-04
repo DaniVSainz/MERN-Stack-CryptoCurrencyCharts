@@ -11,8 +11,7 @@ class ChatBox extends Component {
   }
 
   emitMsg(){
-    console.log(this.props)
-    // this.state.socket.emitTest(this.state.textFieldValue)
+    actions.emitMsg(this.state.textFieldValue);
     this.setState({textFieldValue: ''});
   }
 
@@ -21,20 +20,26 @@ class ChatBox extends Component {
   }
 
   renderMsgs(){
-    this.props.chat.msgs.forEach((msg)=>{
+    console.log('RENDER_MSGS',this.props.chat.msgs)
+    let listItems;
+    if(this.props.chat.msgs.length > 0 ){
+      listItems = this.props.chat.msgs.map((msg)=>{
+        return <li>{msg}</li>
+      });
+      console.log(listItems);
       return(
-        <span style={{color:'black'}}>
-          {msg}
-        </span>
+        <ul>
+          {listItems}
+        </ul>
       )
-    })
-  }
+    }
+
+  } 
 
   async handleTextFieldChange(e){
     await this.setState({
       textFieldValue: e.target.value
     });
-    console.log(this.state.textFieldValue)
   }
 
   render() {
@@ -56,11 +61,9 @@ class ChatBox extends Component {
             <div style={{border:'1px solid black', width:'fit-content'}}>
               <div className="handle">Drag from here</div>
               <div>
-                <ul>
-                  {this.renderMsgs()}
-                </ul>
+                {this.renderMsgs()}
               </div>
-              <button onClick={() => this.props.connected()}>Send msg chat</button>
+              <button onClick={() => this.emitMsg()}>Send msg chat</button>
               <TextField label="Message...." 
                 value={this.state.textFieldValue}
                 onChange={this.handleTextFieldChange.bind(this)}
