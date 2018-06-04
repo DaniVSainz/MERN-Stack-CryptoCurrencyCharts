@@ -5,6 +5,8 @@ import * as actions from '../actions';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
 import ChatIcon from '@material-ui/icons/Chat'
+import CloseIcon from '@material-ui/icons/Close'
+
 
 class ChatBox extends Component {
 
@@ -22,6 +24,7 @@ class ChatBox extends Component {
   }
 
   renderMsgs(){
+    console.log(this.props.ui)
     let listItems;
     if(this.props.chat.msgs.length > 0 ){
       listItems = this.props.chat.msgs.map((msg)=>{
@@ -36,7 +39,34 @@ class ChatBox extends Component {
   }
 
   renderButtonOrChat(){
-
+    if(this.props.ui.chat){
+      return(
+        <div style={{border:'1px solid black', width:'fit-content',backgroundColor: 'white', zIndex:1202, height:'fit-content', position:'absolute',bottom:'10px',right:'10px'}}>
+          <div className="handle">
+            Drag from here
+            <CloseIcon onClick={()=> this.props.closeChat()}></CloseIcon>
+          </div>
+          <div>
+            {this.renderMsgs()}
+          </div>
+          <button onClick={() => this.emitMsg()}>Send msg chat</button>
+          <TextField label="Message...." 
+            value={this.state.textFieldValue}
+            onChange={this.handleTextFieldChange.bind(this)}
+            onSubmit={()=> this.emitMsg()}
+            style={{color:'black'}}
+          >
+            {this.state.textFieldValue}
+          </TextField>
+        </div>
+      )
+    }else{
+      return(
+        <Button className="handle" onClick={()=> this.props.openChat()}variant="fab" mini color="primary" aria-label="chat">
+          <ChatIcon />
+        </Button>
+      )
+    }
   }
 
   async handleTextFieldChange(e){
@@ -59,34 +89,19 @@ class ChatBox extends Component {
       onStop={this.handleStop}
       bounds="body"
       >
-
-        <div style={{border:'1px solid black', width:'fit-content',backgroundColor: 'white', zIndex:1202, height:'fit-content', position:'absolute',bottom:'10px',right:'10px'}}>
-          <Button variant="fab" mini color="primary" aria-label="chat">
-            <ChatIcon />
-          </Button>
-          <div className="handle">Drag from here</div>
-          <div>
-            {this.renderMsgs()}
-          </div>
-          <button onClick={() => this.emitMsg()}>Send msg chat</button>
-          <TextField label="Message...." 
-            value={this.state.textFieldValue}
-            onChange={this.handleTextFieldChange.bind(this)}
-            onSubmit={()=> this.emitMsg()}
-            style={{color:'black'}}
-          >
-            {this.state.textFieldValue}
-          </TextField>
-        </div>
+      <div style={{border:'1px solid black', width:'fit-content',backgroundColor: 'white', zIndex:1202, height:'fit-content', position:'absolute',bottom:'10px',right:'10px'}}>
+          {this.renderButtonOrChat()}
+      </div>
       </Draggable>
     );
   }
 }
 
-function mapStateToProps({auth,chat}){
+function mapStateToProps({auth,chat,ui}){
   return {
     user: auth.user.user,
-    chat: chat
+    chat: chat,
+    ui: ui
   }
 }
 
