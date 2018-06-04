@@ -11,7 +11,8 @@ class ChatBox extends Component {
   }
 
   emitMsg(){
-    this.state.socket.emitTest(this.state.textFieldValue)
+    console.log(this.props)
+    // this.state.socket.emitTest(this.state.textFieldValue)
     this.setState({textFieldValue: ''});
   }
 
@@ -59,7 +60,7 @@ class ChatBox extends Component {
                   {this.renderMsgs()}
                 </ul>
               </div>
-              <button onClick={this.emitMsg.bind(this)}>Send msg chat</button>
+              <button onClick={() => this.props.connected()}>Send msg chat</button>
               <TextField label="Message...." 
                 value={this.state.textFieldValue}
                 onChange={this.handleTextFieldChange.bind(this)}

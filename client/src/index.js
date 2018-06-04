@@ -40,3 +40,4 @@ ReactDOM.render(
   document.querySelector("#root")
 );
 
+export {store};
