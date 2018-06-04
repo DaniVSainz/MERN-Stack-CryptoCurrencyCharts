@@ -41,7 +41,7 @@ class ChatBox extends Component {
   renderButtonOrChat(){
     if(this.props.ui.chat){
       return(
-        <div style={{border:'1px solid black', width:'fit-content',backgroundColor: 'white', zIndex:1202, height:'fit-content', position:'absolute',bottom:'10px',right:'10px'}}>
+        <div style={{border:'1px solid black', width:'fit-content',backgroundColor: 'white', zIndex:1202, height:'fit-content', position:'relative'}}>
           <div className="handle">
             Drag from here
             <CloseIcon onClick={()=> this.props.closeChat()}></CloseIcon>
@@ -89,7 +89,7 @@ class ChatBox extends Component {
       onStop={this.handleStop}
       bounds="body"
       >
-      <div style={{border:'1px solid black', width:'fit-content',backgroundColor: 'white', zIndex:1202, height:'fit-content', position:'absolute',bottom:'10px',right:'10px'}}>
+      <div style={{ width:'fit-content',backgroundColor: 'tansparent', zIndex:1202, height:'fit-content', position:'absolute',bottom:'10px',right:'10px'}}>
           {this.renderButtonOrChat()}
       </div>
       </Draggable>
