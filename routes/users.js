@@ -122,9 +122,7 @@ router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res,
 });
 
 router.delete('/delete', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-  console.log('Inside delete')
   try{
-    console.log(req.user);
     req.user.remove();
     res.status(200).json({success:'deleted user'});
   }catch (e){

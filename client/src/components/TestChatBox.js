@@ -3,6 +3,8 @@ import Draggable from 'react-draggable';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
+import ChatIcon from '@material-ui/icons/Chat'
 
 class ChatBox extends Component {
 
@@ -20,21 +22,22 @@ class ChatBox extends Component {
   }
 
   renderMsgs(){
-    console.log('RENDER_MSGS',this.props.chat.msgs)
     let listItems;
     if(this.props.chat.msgs.length > 0 ){
       listItems = this.props.chat.msgs.map((msg)=>{
         return <li>{msg}</li>
       });
-      console.log(listItems);
       return(
         <ul>
           {listItems}
         </ul>
       )
     }
+  }
 
-  } 
+  renderButtonOrChat(){
+
+  }
 
   async handleTextFieldChange(e){
     await this.setState({
@@ -56,7 +59,11 @@ class ChatBox extends Component {
       onStop={this.handleStop}
       bounds="body"
       >
+
         <div style={{border:'1px solid black', width:'fit-content',backgroundColor: 'white', zIndex:1202, height:'fit-content', position:'absolute',bottom:'10px',right:'10px'}}>
+          <Button variant="fab" mini color="primary" aria-label="chat">
+            <ChatIcon />
+          </Button>
           <div className="handle">Drag from here</div>
           <div>
             {this.renderMsgs()}

@@ -61,7 +61,6 @@ router.post('/verifyEmail/resend', (req,res,next) => {
 })
 
 router.post('/reset', (req,res,next) => {
-    console.log(req.body);
     User.findOne({ email: req.body.email }, function (err, user) {
         if (!user) return res.status(400).send({ msg: 'We were unable to find a user with that email.' });
 
@@ -96,21 +95,17 @@ router.post('/reset', (req,res,next) => {
 });
 
 router.post('/reset/password', (req,res,next) => {
-    console.log(req.body);
     resetPassToken.findOne({ token: req.body.token }, function (err, token) {
         if (!token) return res.status(400).send({ type: 'not-verified', msg: 'We were unable to find a valid token. Your token my have expired.' });
 
         User.findOne({ email: req.body.email }, function (err, user) {
         if (!user){
-            console.log(user);
             return res.status(400).send({ msg:'We were unable to find a user with that email.'});
         }
         
         if(token._userId.toString !== user._id.toString){
-            console.log(token._userId, user._id)
             return res.status(400).send({ msg: 'Email provided does not match this password reset token.' });
         }
-        console.log('Tokens match');
         //If token user id and email user id match
         user.password = req.body.password;
 
