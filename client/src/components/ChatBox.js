@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button'
 import ChatIcon from '@material-ui/icons/Chat'
 import CloseIcon from '@material-ui/icons/Close'
 import {Launcher} from 'react-chat-window'
+import Typography from '@material-ui/core/Typography'
 
 
 class ChatBox extends Component {
@@ -30,12 +31,16 @@ class ChatBox extends Component {
     let listItems;
     if(this.props.chat.msgs.length > 0 ){
       listItems = this.props.chat.msgs.map((msg)=>{
-        return <li>{msg}</li>
+        return (
+          <Typography variant="body1" style={{color:'black'}}>
+          {msg}
+        </Typography>
+        )
       });
       return(
-        <ul>
+        <div>
           {listItems}
-        </ul>
+        </div>
       )
     }
   }
@@ -45,9 +50,9 @@ class ChatBox extends Component {
       return(
         <div style={{border:'1px solid black', width:'fit-content',backgroundColor: 'white', zIndex:1202, height:'fit-content', position:'relative'}}>
           <div className="handle cardHeader" style={{display:'flex'}}>
-            <div >
-              Drag from here
-            </div>
+            <Typography variant="body1" >
+              Drag me !
+            </Typography>
             <div style={{marginLeft:'auto'}}> 
               <CloseIcon onClick={()=> this.props.closeChat()}></CloseIcon>
             </div>
