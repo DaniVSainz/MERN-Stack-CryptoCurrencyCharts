@@ -30,7 +30,7 @@ export const mailFolderListItems = (
         <ListItemText primary="Starred" />
       </ListItem>
     </Link>
-    <Link to="/chat">
+    <Link to="/test">
       <ListItem button>
         <ListItemIcon>
           <SendIcon />

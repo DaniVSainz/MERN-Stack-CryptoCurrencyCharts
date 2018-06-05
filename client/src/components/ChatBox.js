@@ -14,7 +14,8 @@ class ChatBox extends Component {
     textFieldValue: '',
   }
 
-  emitMsg(){
+  emitMsg(e){
+    e.preventDefault();
     actions.emitMsg(this.state.textFieldValue);
     this.setState({textFieldValue: ''});
   }
@@ -49,15 +50,17 @@ class ChatBox extends Component {
           <div>
             {this.renderMsgs()}
           </div>
-          <button onClick={() => this.emitMsg()}>Send msg chat</button>
-          <TextField label="Message...." 
-            value={this.state.textFieldValue}
-            onChange={this.handleTextFieldChange.bind(this)}
-            onSubmit={()=> this.emitMsg()}
-            style={{color:'black'}}
-          >
-            {this.state.textFieldValue}
-          </TextField>
+          <form onSubmit={(e)=> this.emitMsg(e)}>
+            <button onClick={(e) => this.emitMsg(e)}>Send msg chat</button>
+            <TextField label="Message...." 
+              value={this.state.textFieldValue}
+              onChange={this.handleTextFieldChange.bind(this)}
+              onSubmit={()=> this.emitMsg()}
+              style={{color:'black'}}
+            >
+              {this.state.textFieldValue}
+            </TextField>
+          </form>
         </div>
       )
     }else{
