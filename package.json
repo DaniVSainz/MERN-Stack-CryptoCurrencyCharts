@@ -24,6 +24,7 @@
     "passport": "0.4.0",
     "passport-jwt": "^4.0.0",
     "react-toastify": "^4.0.1",
+    "socket.io": "^2.1.1",
     "typescript": "~2.4.2"
   },
   "author": "",
