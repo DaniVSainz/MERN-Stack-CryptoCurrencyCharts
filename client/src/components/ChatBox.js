@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
 import ChatIcon from '@material-ui/icons/Chat'
 import CloseIcon from '@material-ui/icons/Close'
+import {Launcher} from 'react-chat-window'
 
 
 class ChatBox extends Component {
@@ -61,6 +62,7 @@ class ChatBox extends Component {
               onChange={this.handleTextFieldChange.bind(this)}
               onSubmit={()=> this.emitMsg()}
               style={{color:'black'}}
+              InputProps={{style:{color:'black'}}}
             >
               {this.state.textFieldValue}
             </TextField>

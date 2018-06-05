@@ -18,6 +18,7 @@
     "echarts-for-react": "^2.0.11",
     "materialize-css": "^0.100.2",
     "react": "^16.4.0",
+    "react-chat-window": "^1.0.8",
     "react-dom": "^16.4.0",
     "react-draggable": "^3.0.5",
     "react-redux": "^5.0.7",
