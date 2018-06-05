@@ -43,9 +43,13 @@ class ChatBox extends Component {
     if(this.props.ui.chat){
       return(
         <div style={{border:'1px solid black', width:'fit-content',backgroundColor: 'white', zIndex:1202, height:'fit-content', position:'relative'}}>
-          <div className="handle">
-            Drag from here
-            <CloseIcon onClick={()=> this.props.closeChat()}></CloseIcon>
+          <div className="handle cardHeader" style={{display:'flex'}}>
+            <div >
+              Drag from here
+            </div>
+            <div style={{marginLeft:'auto'}}> 
+              <CloseIcon onClick={()=> this.props.closeChat()}></CloseIcon>
+            </div>
           </div>
           <div>
             {this.renderMsgs()}
