@@ -29,13 +29,13 @@ class ChatBox extends Component {
     console.log(this.props.ui)
     let listItems;
     if(this.props.chat.msgs.length > 0 ){
-      listItems = this.props.chat.msgs.map((msg)=>{
+      listItems = this.props.chat.msgs.map((msg, index)=>{
         return (
-          <div>
+          <div key={index}>
             <Typography variant="body1" style={{color:'black'}}>
               {msg}
             </Typography>
-            <hr style={{width: '90%', borderColor: '#4b4c441a'}} />
+            <hr style={{width: '85%', borderColor: '#4b4c441a', borderBottomWidth: '0px'}} />
           </div>
         )
       });
@@ -63,7 +63,7 @@ class ChatBox extends Component {
             {this.renderMsgs()}
           </div>
           <form onSubmit={(e)=> this.emitMsg(e)}>
-            <button onClick={(e) => this.emitMsg(e)}>Send msg chat</button>
+            <Button variant="outlined" color="primary" onClick={(e) => this.emitMsg(e)}>Send msg chat</Button>
             <TextField label="Message...." 
               value={this.state.textFieldValue}
               onChange={this.handleTextFieldChange.bind(this)}
@@ -78,7 +78,10 @@ class ChatBox extends Component {
       )
     }else{
       return(
-        <Button className="handle" onClick={()=> this.props.openChat()}variant="fab" mini color="primary" aria-label="chat">
+        <Button className="handle" onClick={()=> this.props.openChat()} 
+          variant="fab" size="medium" color="primary" 
+          style={{backgroundColor: '#f50057'}} aria-label="chat"
+        >
           <ChatIcon />
         </Button>
       )

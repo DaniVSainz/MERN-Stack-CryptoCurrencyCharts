@@ -3,7 +3,36 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 
+let styles = {
+  pairing:{
+    color: '#38ef7d'
+  },
+  positive: {
+    color: '#38ef7d'
+  },
+  negative: {
+    color : 'red'
+  }
+}
+
+
+
 export default ({cryptoCurrency, pair}) => {
+
+  function preparePercentChange(text,percent) {
+    let color;
+    if(percent.charAt(0) == '-'){
+      color = styles.negative
+    }else{
+      color = styles.positive
+    }
+    return(
+      <Typography variant="title" gutterBottom>
+        {text} <span style={color}>{percent}%</span>
+      </Typography>
+    )
+  }
+
   return(
     <div style={{display:'flex', justifyContent:'space-between'}}>
       <div>
@@ -15,19 +44,13 @@ export default ({cryptoCurrency, pair}) => {
           Current Price: ${cryptoCurrency.price_usd}
         </Typography>
         <Typography variant="title" gutterBottom>
-          Pairing: {pair.symbol}/{pair.quote_asset}
+          Pairing: <span style={styles.pairing}>{pair.symbol}</span>/{pair.quote_asset}
         </Typography>
       </div>
       <div>
-        <Typography variant="title" gutterBottom>
-          Percent Change 1 Hour: {cryptoCurrency.percent_change_1h}%
-        </Typography>
-        <Typography variant="title" gutterBottom>
-          Percent Change 24 Hour: {cryptoCurrency.percent_change_24h}%
-        </Typography>
-        <Typography variant="title" gutterBottom>
-          Percent Change 7 Days: {cryptoCurrency.percent_change_7d}%
-        </Typography>
+        {preparePercentChange('Percent Change 1 Hour:', cryptoCurrency.percent_change_1h)}
+        {preparePercentChange('Percent Change 24 Hour:', cryptoCurrency.percent_change_24h)}
+        {preparePercentChange('Percent Change 7 Days:', cryptoCurrency.percent_change_7d)}
       </div>
       <div>
         <Typography variant="title" gutterBottom>
