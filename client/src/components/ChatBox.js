@@ -31,9 +31,12 @@ class ChatBox extends Component {
     if(this.props.chat.msgs.length > 0 ){
       listItems = this.props.chat.msgs.map((msg)=>{
         return (
-          <Typography variant="body1" style={{color:'black'}}>
-          {msg}
-        </Typography>
+          <div>
+            <Typography variant="body1" style={{color:'black'}}>
+              {msg}
+            </Typography>
+            <hr style={{width: '90%', borderColor: '#4b4c441a'}} />
+          </div>
         )
       });
       return(

@@ -10,7 +10,8 @@ const columns = [
   {
 	Header: 'Rank',
   accessor: 'rank',
-  className: 'tableRowStyles'  
+  className: 'tableRowStyles', 
+  style:{fontFamily: 'exo'} 
 }, {
 	Header: 'Currency',
   accessor: 'name',
@@ -19,7 +20,7 @@ const columns = [
 	Cell: props => 
     <div>
       <img src={window.location.origin + `/assets/images/coins/${props.value.split(' ').join('_')}.png`} alt={`${props.value} icon`}/>
-      <span>{props.value}</span>
+      <span style={{ fontFamily:'exo', color: 'black', fontSize: '16px', marginLeft: '5px'}} >{props.value}</span>
     </div>
 },
 {
@@ -27,7 +28,7 @@ const columns = [
 	accessor: 'price_usd',
   className: 'tableRowStyles',
   Cell: props => 
-    <span style={{ fontFamily:'Roboto', color: 'black'}} > ${props.value} </span>
+    <span style={{ fontFamily:'exo', color: 'black', fontSize: '18px'}} > ${props.value.toFixed(2)} </span>
   
 },
 {
@@ -36,9 +37,9 @@ const columns = [
   className: 'tableRowStyles',  
   Cell: props =>{
     if(props.value.charAt(0) === '-'){
-      return <span style={{color:'red', fontFamily:'exo'}}>{props.value}</span>;
+      return <span style={{color:'red', fontFamily:'exo', fontSize: '16px'}}>{props.value}</span>;
     }else{
-      return <span style={{color:'green', fontFamily:'exo'}}>+{props.value}</span>;
+      return <span style={{color:'green', fontFamily:'exo', fontSize: '16px'}}>+{props.value}</span>;
     }
   }
 }
