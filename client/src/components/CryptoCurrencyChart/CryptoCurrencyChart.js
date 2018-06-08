@@ -34,7 +34,7 @@ class CryptoCurrencyChart extends Component {
   }
 
   getSpecificPairing(){
-    
+    console.log('Clicked');
   }
 
   getOption = () => {
@@ -198,6 +198,7 @@ class CryptoCurrencyChart extends Component {
             cryptoCurrency={this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency}
             pair={this.props.cryptocurrency.cryptocurrency[0].pair}
             pairs={this.props.cryptocurrency.cryptocurrency[3].pairs}
+            getSpecificPairing={this.getSpecificPairing}
           />
         )}
         {this.renderLineChart()}

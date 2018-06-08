@@ -17,7 +17,7 @@ let styles = {
 
 
 
-export default ({cryptoCurrency, pair,pairs}) => {
+export default ({cryptoCurrency, pair,pairs,getSpecificPairing}) => {
 
   console.log(pairs)
 
@@ -39,7 +39,7 @@ export default ({cryptoCurrency, pair,pairs}) => {
     let pairsSpan = pairs.map((pair,i)=>{
       // return(<span key={i}>{pair.quote_asset}</span>);
       return(
-        <Button variant="outlined" color="primary" key={i}>
+        <Button variant="outlined" color="primary" key={i} onClick={()=> getSpecificPairing(pair)}>
           {pair.quote_asset}
         </Button>
       )
