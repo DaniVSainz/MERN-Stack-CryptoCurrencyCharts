@@ -6,12 +6,19 @@ import * as actions from '../../actions';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 
+const dollarSign = {
+  fontFamily: 'exo',
+  marginRight: '1px',
+  fontWeight: '600',
+  color: '#00000061',
+}
+
 const columns = [
   {
 	Header: 'Rank',
   accessor: 'rank',
   className: 'tableRowStyles', 
-  style:{fontFamily: 'exo'} 
+  // style:{fontFamily: 'exo'} 
 }, {
 	Header: 'Currency',
   accessor: 'name',
@@ -28,7 +35,8 @@ const columns = [
 	accessor: 'price_usd',
   className: 'tableRowStyles',
   Cell: props => 
-    <span style={{ fontFamily:'exo', color: 'black', fontSize: '18px'}} > ${props.value.toFixed(2)} </span>
+    <span style={{ fontFamily:'exo', color: 'black', fontSize: '16px'}} > <span style={dollarSign}>$</span>{props.value.toFixed(2)} </span>
+    
   
 },
 {
