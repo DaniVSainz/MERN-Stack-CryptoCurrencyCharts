@@ -9,7 +9,7 @@ import 'react-table/react-table.css';
 const columns = [
   {
 	Header: 'Rank',
-  accessor: 'rank', // String-based value accessors!
+  accessor: 'rank',
   className: 'tableRowStyles'  
 }, {
 	Header: 'Currency',
@@ -24,14 +24,32 @@ const columns = [
 },
 {
 	Header: 'Price',
-	accessor: 'price_usd',// Custom value accessors!
+	accessor: 'price_usd',
+  className: 'tableRowStyles',
+  Cell: props => 
+    <span style={{ fontFamily:'Roboto', color: 'black'}} > ${props.value} </span>
+  
+},
+{
+	Header: '24 Hour Change',
+	accessor: 'percent_change_24h',
   className: 'tableRowStyles',  
-}]
+  Cell: props =>{
+    if(props.value.charAt(0) === '-'){
+      return <span style={{color:'red', fontFamily:'exo'}}>{props.value}</span>;
+    }else{
+      return <span style={{color:'green', fontFamily:'exo'}}>+{props.value}</span>;
+    }
+  }
+}
+
+]
 
 class SmartTable extends Component {
 
   async componentDidMount(){
     await this.props.getAllCryptoCurrencies();
+    console.log(this.props.cryptocurrency)
   }
 
   navigateToArea(rowData){
