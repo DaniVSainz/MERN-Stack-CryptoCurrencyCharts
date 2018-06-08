@@ -22,15 +22,15 @@ export const mailFolderListItems = (
         <ListItemText primary="Cryptocurrencies" />
       </ListItem>
     </Link>
-    <Link to="/home">
+    {/* <Link to="/home">
       <ListItem button>
         <ListItemIcon>
           <StarIcon />
         </ListItemIcon>
         <ListItemText primary="Starred" />
       </ListItem>
-    </Link>
-    <Link to="/test">
+    </Link> */}
+    {/* <Link to="/test">
       <ListItem button>
         <ListItemIcon>
           <SendIcon />
@@ -43,7 +43,7 @@ export const mailFolderListItems = (
         <DraftsIcon />
       </ListItemIcon>
       <ListItemText primary="Drafts" />
-    </ListItem>
+    </ListItem> */}
   </div>
 );
 

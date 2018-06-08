@@ -56,12 +56,17 @@ main{
 
 /* Table */
 .tableRowStyles{
-  background-color: #0a1933;
-  border-bottom: 1px solid black;
+  display:flex;
+  justify-content: center;
 }
-.tableRowStyles:hover{
-  background-color: gray;
+
+.rt-tr-group:hover{
+  background-color: #0d39a07a;
 }
+
+
+
+/*  */
 
 .green{
   color:'#26df8b';
