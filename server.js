@@ -62,7 +62,12 @@ let msgs = [`There's no message, try sending one`];
 io.on('connection', function (socket) {
   socket.emit('connected', [`You're connected to the chat`, msgs]);
 
-  socket.on('message', function (msg) {
+  socket.on('message', function (msg,user) {
+    console.log(user);
+    if(!user){
+      user = 'Anonymous'
+    }
+    msg = `${user}: ${msg}`
     msgs.push(msg);
     io.emit('broadcastMsg', msgs)
   });

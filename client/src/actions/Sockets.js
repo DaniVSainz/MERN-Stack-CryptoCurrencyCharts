@@ -17,6 +17,7 @@ socket.on('broadcastMsg', (msg) => {
   store.dispatch({ type: SOCKET_MSGS, payload: msg });
 });
 
-export const emitMsg = (msg) => {
-  socket.emit('message', msg);
+export const emitMsg = (msg,user) => {
+  console.log(user)
+  socket.emit('message', msg,user);
 }

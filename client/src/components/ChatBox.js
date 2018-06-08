@@ -6,7 +6,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
 import ChatIcon from '@material-ui/icons/Chat'
 import CloseIcon from '@material-ui/icons/Close'
-import {Launcher} from 'react-chat-window'
 import Typography from '@material-ui/core/Typography'
 
 
@@ -18,7 +17,7 @@ class ChatBox extends Component {
 
   emitMsg(e){
     e.preventDefault();
-    actions.emitMsg(this.state.textFieldValue);
+    actions.emitMsg(this.state.textFieldValue, this.props.user.username);
     this.setState({textFieldValue: ''});
   }
 
