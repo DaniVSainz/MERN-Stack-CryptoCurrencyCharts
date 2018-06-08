@@ -1,9 +1,15 @@
 import axios from "axios";
 import { GET_CRYPTOCURRENCIES, GET_CRYPTOCURRENCY} from "./types";
+let url;
 
-const url = "http://159.89.48.60:3001"
-// const url = "http://localhost:3001";
+// url = "http://159.89.48.60:3001"
+// url = "http://localhost:3001";
 
+if(process.env.REACT_APP_ENV === 'dev'){
+  url = "http://localhost:3001";
+}else{
+  url = "http://159.89.48.60:3001"
+}
 
 export const getAllCryptoCurrencies = () => async dispatch =>{
   let res = await axios.get(`${url}/coinmarketcap/getall`).catch(err => {

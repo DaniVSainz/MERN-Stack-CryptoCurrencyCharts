@@ -17,7 +17,9 @@ let styles = {
 
 
 
-export default ({cryptoCurrency, pair}) => {
+export default ({cryptoCurrency, pair,pairs}) => {
+
+  console.log(pairs)
 
   function preparePercentChange(text,percent) {
     let color;
@@ -33,18 +35,30 @@ export default ({cryptoCurrency, pair}) => {
     )
   }
 
+  function preparePairs(pairs){
+    let pairsSpan = pairs.map((pair,i)=>{
+      // return(<span key={i}>{pair.quote_asset}</span>);
+      return(
+        <Button variant="outlined" color="primary" key={i}>
+          {pair.quote_asset}
+        </Button>
+      )
+    });
+    return pairsSpan
+  }
+
   return(
     <div style={{display:'flex', justifyContent:'space-between'}}>
       <div>
         <Typography variant="title" gutterBottom>
-          <span><img src={window.location.origin + `/assets/images/coins/${cryptoCurrency.name.split(' ').join('_')}.png`} alt={`${cryptoCurrency.name} icon`}/></span>
+          <span><img style={{marginRight:'3px'}} src={window.location.origin + `/assets/images/coins/${cryptoCurrency.name.split(' ').join('_')}.png`} alt={`${cryptoCurrency.name} icon`}/></span>
           {cryptoCurrency.name}
         </Typography>
         <Typography variant="title" gutterBottom>
           Current Price: ${cryptoCurrency.price_usd}
         </Typography>
         <Typography variant="title" gutterBottom>
-          Pairing: <span style={styles.pairing}>{pair.symbol}</span>/{pair.quote_asset}
+          Pairing: <span style={styles.pairing}>{pair.symbol}</span>/{pair.quote_asset} {preparePairs(pairs)}
         </Typography>
       </div>
       <div>
@@ -54,10 +68,10 @@ export default ({cryptoCurrency, pair}) => {
       </div>
       <div>
         <Typography variant="title" gutterBottom>
-          24H Volume: ${cryptoCurrency['24h_volume_usd']}
+          24H Volume: ${parseInt(cryptoCurrency['24h_volume_usd']).toLocaleString()}
         </Typography>
         <Typography variant="title" gutterBottom>
-          Info Update: {new Date(cryptoCurrency.updatedAt).toLocaleString()}
+          Info Updated: {new Date(cryptoCurrency.updatedAt).toLocaleString()}
         </Typography>
       </div>
       <div>

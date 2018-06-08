@@ -18,6 +18,7 @@ class CryptoCurrencyChart extends Component {
   async componentDidMount(){
     await this.props.getCryptoCurrency(this.props.match.params.symbol);
     this.setProps();
+    console.log(this.props.cryptoCurrency)
   }
 
   async setProps(){
@@ -30,6 +31,10 @@ class CryptoCurrencyChart extends Component {
       });
     }
     await this.setState({pair: this.props.cryptocurrency.cryptocurrency[0].pair});
+  }
+
+  getSpecificPairing(){
+    
   }
 
   getOption = () => {
@@ -192,6 +197,7 @@ class CryptoCurrencyChart extends Component {
           <CryptoCurrencyHeader 
             cryptoCurrency={this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency}
             pair={this.props.cryptocurrency.cryptocurrency[0].pair}
+            pairs={this.props.cryptocurrency.cryptocurrency[3].pairs}
           />
         )}
         {this.renderLineChart()}
