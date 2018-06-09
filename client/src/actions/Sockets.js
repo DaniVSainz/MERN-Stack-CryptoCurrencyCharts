@@ -18,6 +18,5 @@ socket.on('broadcastMsg', (msg) => {
 });
 
 export const emitMsg = (msg,user) => {
-  console.log(user)
   socket.emit('message', msg,user);
 }

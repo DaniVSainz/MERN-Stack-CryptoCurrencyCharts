@@ -18,10 +18,17 @@ class CryptoCurrencyChart extends Component {
   async componentDidMount(){
     await this.props.getCryptoCurrency(this.props.match.params.symbol);
     this.setProps();
-    console.log(this.props.cryptoCurrency)
   }
 
   async setProps(){
+    if(this.state.dayData.length > 1){
+      await this.setState({dayData: []});
+    }
+    if(this.state.priceData.length > 1){
+      await this.setState({priceData: []});
+    }
+
+
     await this.setState({days: this.props.cryptocurrency.cryptocurrency[1].days});
     await this.setState({cryptoCurrency : this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency });
     if(this.state.days){
@@ -33,8 +40,12 @@ class CryptoCurrencyChart extends Component {
     await this.setState({pair: this.props.cryptocurrency.cryptocurrency[0].pair});
   }
 
-  getSpecificPairing(){
-    console.log('Clicked');
+  async selectPairing(symbol,quoteAsset){
+    console.log(symbol,quoteAsset)
+    await this.props.getCryptoCurrencyPairing(symbol,quoteAsset);
+    await this.setProps();
+    // console.log(this.state);
+    // this.renderLineChart();
   }
 
   getOption = () => {
@@ -198,7 +209,7 @@ class CryptoCurrencyChart extends Component {
             cryptoCurrency={this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency}
             pair={this.props.cryptocurrency.cryptocurrency[0].pair}
             pairs={this.props.cryptocurrency.cryptocurrency[3].pairs}
-            getSpecificPairing={this.getSpecificPairing}
+            selectPairing={this.selectPairing.bind(this)}
           />
         )}
         {this.renderLineChart()}

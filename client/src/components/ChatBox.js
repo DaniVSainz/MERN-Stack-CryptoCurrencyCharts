@@ -26,7 +26,6 @@ class ChatBox extends Component {
   }
 
   renderMsgs(){
-    console.log(this.props.ui)
     let listItems;
     if(this.props.chat.msgs.length > 0 ){
       listItems = this.props.chat.msgs.map((msg, index)=>{

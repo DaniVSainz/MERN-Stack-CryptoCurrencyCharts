@@ -19,7 +19,6 @@ export const closeDrawer = () => {
 
 //Toggle Chat box
 export const openChat = () => {
-  console.log('OpenChat')
   return{
     type:OPEN_CHAT,
     payload:{chat:true}
