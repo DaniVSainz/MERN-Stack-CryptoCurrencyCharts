@@ -10,7 +10,7 @@ class CryptoCurrencies extends Component {
 
   render() {
     return (
-      <div style={{position:'absolute', width:'100%'}}>
+      <div style={{position:'absolute', width:'100%', overflow:'auto'}}>
         <div>
           <div>
             <Typography variant="headline" gutterBottom>

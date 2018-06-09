@@ -18,7 +18,6 @@ const columns = [
 	Header: 'Rank',
   accessor: 'rank',
   className: 'tableRowStyles', 
-  // style:{fontFamily: 'exo'} 
 }, {
 	Header: 'Currency',
   accessor: 'name',
@@ -34,8 +33,11 @@ const columns = [
 	Header: 'Price',
 	accessor: 'price_usd',
   className: 'tableRowStyles',
-  Cell: props => 
-    <span style={{ fontFamily:'exo', color: 'black', fontSize: '16px'}} > <span style={dollarSign}>$</span>{props.value.toFixed(2)} </span>
+  Cell: props => {
+    if(props.value){
+      return <span style={{ fontFamily:'exo', color: 'black', fontSize: '16px'}} > <span style={dollarSign}>$</span>{props.value.toFixed(2)} </span>
+    }
+  }
     
   
 },
@@ -44,15 +46,20 @@ const columns = [
 	accessor: 'percent_change_24h',
   className: 'tableRowStyles',  
   Cell: props =>{
-    if(props.value.charAt(0) === '-'){
+    if(props.value && props.value.charAt(0) === '-'){
       return <span style={{color:'red', fontFamily:'exo', fontSize: '16px'}}>{props.value}</span>;
     }else{
       return <span style={{color:'green', fontFamily:'exo', fontSize: '16px'}}>+{props.value}</span>;
     }
   }
 }
-
 ]
+
+function noData(){
+  return(
+    <div>No Data</div>
+  )
+}
 
 class SmartTable extends Component {
 
@@ -67,13 +74,15 @@ class SmartTable extends Component {
   renderTable(){
     if(this.props.cryptocurrency.cryptocurrencies){
       return(
-          <div>
+          <div id="react-table-div">
 						<ReactTable
+              filterable
 							data={this.props.cryptocurrency.cryptocurrencies}
               columns={columns}
 							getTrProps={(state, rowInfo, column, instance) => ({
 								onClick: e => this.navigateToArea(rowInfo.original)
-							})}
+              })}
+              className="-striped -highlight"
 						/>
 					</div>
       )

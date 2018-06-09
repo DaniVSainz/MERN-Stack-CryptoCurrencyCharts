@@ -63,7 +63,8 @@ class ChatBox extends Component {
           </div>
           <form onSubmit={(e)=> this.emitMsg(e)}>
             <Button variant="outlined" color="primary" onClick={(e) => this.emitMsg(e)}>Send msg chat</Button>
-            <TextField label="Message...." 
+            <TextField label="Type your message...." 
+              placeholder="Message...."
               value={this.state.textFieldValue}
               onChange={this.handleTextFieldChange.bind(this)}
               onSubmit={()=> this.emitMsg()}

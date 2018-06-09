@@ -90,6 +90,7 @@ const styles = theme => ({
     justifyContent: 'flex-end',
     padding: '0 8px',
     ...theme.mixins.toolbar,
+    backgroundColor:'black'
   },
   content: {
     flexGrow: 1,
@@ -110,7 +111,7 @@ class App extends React.Component {
 
     return (
       <BrowserRouter history={this.props.history}>
-      <div className={classNames(classes.root)}>
+      <div className={classNames(classes.root)} >
         <Header></Header>
         <ToastContainer />
         <Drawer
