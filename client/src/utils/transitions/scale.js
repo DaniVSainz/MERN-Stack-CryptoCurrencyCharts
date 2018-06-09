@@ -1,7 +1,7 @@
 import { injectGlobal, keyframes } from 'styled-components'
 
 const transitionClassName = 'scale'
-const duration = 600
+const duration = 1000
 
 const moveFromRight = keyframes`
 from { transform: translateX(100%); }

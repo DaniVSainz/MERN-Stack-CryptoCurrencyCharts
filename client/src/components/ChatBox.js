@@ -68,7 +68,16 @@ class ChatBox extends Component {
               onChange={this.handleTextFieldChange.bind(this)}
               onSubmit={()=> this.emitMsg()}
               style={{color:'black'}}
-              InputProps={{style:{color:'black'}}}
+              InputProps={{
+                style: {
+                  color:'black'
+                }
+              }}
+              InputLabelProps={{
+                style: {
+                  color:'black'
+                }
+              }}
             >
               {this.state.textFieldValue}
             </TextField>

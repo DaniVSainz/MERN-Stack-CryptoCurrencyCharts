@@ -1,15 +1,17 @@
 import { injectGlobal, keyframes } from 'styled-components'
 
 const transitionClassName = 'slide'
-const duration = 600
+const duration = 900
 
 const slideOut = keyframes`
+position:absolute
 0% { }
 25% { opacity: .5; transform: translateZ(-500px); }
 75% { opacity: .5; transform: translateZ(-500px) translateX(-200%); }
 100% { opacity: .5; transform: translateZ(-500px) translateX(-200%); }
 `
 const slideIn = keyframes`
+position:absolute
 0%, 25% { opacity: .5; transform: translateZ(-500px) translateX(200%); }
 75% { opacity: .5; transform: translateZ(-500px); }
 100% { opacity: 1; transform: translateZ(0) translateX(0); }
