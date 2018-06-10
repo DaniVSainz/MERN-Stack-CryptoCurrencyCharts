@@ -5,6 +5,7 @@ import * as actions from '../../actions';
 
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+let windowHeight = parseInt(window.screen.availHeight * 0.7) ;
 
 const dollarSign = {
   fontFamily: 'exo',
@@ -83,6 +84,7 @@ class SmartTable extends Component {
 								onClick: e => this.navigateToArea(rowInfo.original)
               })}
               className="-striped -highlight"
+              style={{height: windowHeight}}
 						/>
 					</div>
       )

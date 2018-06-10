@@ -4,6 +4,9 @@ import * as actions from '../../actions'
 import ReactEcharts from 'echarts-for-react';
 import CryptoCurrencyHeader from './CryptoCurrencyHeader';
 
+let windowWidth = parseInt(window.screen.availWidth  * 0.8);
+console.log(windowWidth);
+
 
 class CryptoCurrencyChart extends Component {
 
@@ -179,6 +182,7 @@ class CryptoCurrencyChart extends Component {
     };
   };
 
+
   renderLineChart(){
     if(this.state.pair){
       return(
@@ -187,7 +191,7 @@ class CryptoCurrencyChart extends Component {
           <div >
             <ReactEcharts
               option={this.getOption()}
-              style={{height: '400px', width: '90%', margin:'0'}}
+              style={{height: '400px', width: windowWidth, margin:'0'}}
               className='react_for_echarts' />
           </div>
         </div>
@@ -203,7 +207,7 @@ class CryptoCurrencyChart extends Component {
 
   render() {
     return (
-      <div className="myContainer">
+      <div className="myContainer" >
         {this.state.pair && (
           <CryptoCurrencyHeader 
             cryptoCurrency={this.props.cryptocurrency.cryptocurrency[2].cryptoCurrency}

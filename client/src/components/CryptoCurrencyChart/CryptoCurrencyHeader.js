@@ -12,12 +12,20 @@ let styles = {
   },
   negative: {
     color : 'red'
+  },
+  header:{
+    display:'flex',
+    justifyContent:'space-between'
   }
+}
+let windowWidth = parseInt(window.screen.availWidth);
+if(windowWidth <= 1100){
+  styles.header.flexDirection = 'column';
 }
 
 
-
 export default ({cryptoCurrency, pair,pairs,selectPairing}) => {
+
 
 
   function preparePercentChange(text,percent) {
@@ -47,7 +55,7 @@ export default ({cryptoCurrency, pair,pairs,selectPairing}) => {
   }
 
   return(
-    <div style={{display:'flex', justifyContent:'space-between'}}>
+    <div style={styles.header}>
       <div>
         <Typography variant="title" gutterBottom>
           <span><img style={{marginRight:'3px'}} src={window.location.origin + `/assets/images/coins/${cryptoCurrency.name.split(' ').join('_')}.png`} alt={`${cryptoCurrency.name} icon`}/></span>
